@@ -110,17 +110,30 @@ public class DashBoard extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(String fragment, String username, String password) {
-        Profile profile;
-        profile = new Profile();
-        Bundle args = new Bundle();
-        args.putSerializable(getString(R.string.username), username);
-        args.putSerializable(getString(R.string.pass), password);
-        profile.setArguments(args);
-        FragmentTransaction transaction = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentContainer, profile)
-                .addToBackStack(null);
+        if (fragment.equals("profile")) {
+            Profile profile;
+            profile = new Profile();
+            Bundle args = new Bundle();
+            args.putSerializable(getString(R.string.username), username);
+            args.putSerializable(getString(R.string.pass), password);
+            profile.setArguments(args);
+            FragmentTransaction transaction = getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, profile)
+                    .addToBackStack(null);
 // Commit the transaction
-        transaction.commit();
+            transaction.commit();
+        } else if (fragment.equals("register")) {
+            Register register;
+            register = new Register();
+            Bundle args = new Bundle();
+            register.setArguments(args);
+            FragmentTransaction transaction = getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, register)
+                    .addToBackStack(null);
+// Commit the transaction
+            transaction.commit();
+        }
     }
 }

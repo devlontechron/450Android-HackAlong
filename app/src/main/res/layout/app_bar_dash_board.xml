@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragmentContainer"
     tools:context="group6.tcss450.uw.edu.hackalong.DashBoard">
 
     <android.support.design.widget.AppBarLayout
