@@ -55,7 +55,17 @@ public class MainPage extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-
+        if (mListener != null) {
+            switch (v.getId()) {
+                case R.id.loginbutton:
+                    String username = "";
+                    String password = "";
+                    mListener.onFragmentInteraction("events", username, password);
+                    break;
+                case R.id.registerbutton:
+                    mListener.onFragmentInteraction("register", null, null);
+            }
+        }
     }
 
     /**
