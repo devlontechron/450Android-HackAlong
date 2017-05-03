@@ -15,7 +15,7 @@ import android.view.ViewGroup;
  * {@link Register.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class Register extends Fragment {
+public class Register extends MainPage {
 
     private OnFragmentInteractionListener mListener;
 

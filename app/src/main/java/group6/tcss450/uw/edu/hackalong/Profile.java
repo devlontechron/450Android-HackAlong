@@ -15,7 +15,7 @@ import android.view.ViewGroup;
  * {@link Profile.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class Profile extends Fragment {
+public class Profile extends MainPage {
 
     private OnFragmentInteractionListener mListener;
 
@@ -29,13 +29,6 @@ public class Profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override

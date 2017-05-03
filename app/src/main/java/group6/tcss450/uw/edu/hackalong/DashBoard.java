@@ -3,6 +3,7 @@ package group6.tcss450.uw.edu.hackalong;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class DashBoard extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainPage.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,14 @@ public class DashBoard extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if(savedInstanceState == null) {
+            if (findViewById(R.id.fragmentContainer) != null) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentContainer, new MainPage())
+                        .commit();
+            }
+        }
     }
 
     @Override
@@ -97,5 +106,21 @@ public class DashBoard extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(String fragment, String username, String password) {
+        Profile profile;
+        profile = new Profile();
+        Bundle args = new Bundle();
+        args.putSerializable(getString(R.string.username), username);
+        args.putSerializable(getString(R.string.pass), password);
+        profile.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, profile)
+                .addToBackStack(null);
+// Commit the transaction
+        transaction.commit();
     }
 }
