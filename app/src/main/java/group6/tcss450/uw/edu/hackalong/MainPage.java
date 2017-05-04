@@ -21,7 +21,6 @@ public class MainPage extends Fragment implements View.OnClickListener{
     private OnFragmentInteractionListener mListener;
 
     public MainPage() {
-        // Required empty public constructor
     }
 
 
@@ -78,7 +77,6 @@ public class MainPage extends Fragment implements View.OnClickListener{
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(String fragment, String username, String password);
     }
 }

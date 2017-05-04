@@ -21,7 +21,6 @@ public class Register extends MainPage {
     private OnFragmentInteractionListener mListener;
 
     public Register() {
-        // Required empty public constructor
     }
 
 

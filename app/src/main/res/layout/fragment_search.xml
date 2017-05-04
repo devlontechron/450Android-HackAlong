@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     tools:context="group6.tcss450.uw.edu.hackalong.Search">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <EditText
         android:id="@+id/editText3"
         android:layout_width="307dp"

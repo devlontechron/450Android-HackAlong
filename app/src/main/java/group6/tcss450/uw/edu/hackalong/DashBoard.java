@@ -121,7 +121,6 @@ public class DashBoard extends AppCompatActivity
                     .beginTransaction()
                     .replace(R.id.fragmentContainer, events)
                     .addToBackStack(null);
-// Commit the transaction
             transaction.commit();
         } else if (fragment.equals("register")) {
             Register register;
@@ -132,7 +131,6 @@ public class DashBoard extends AppCompatActivity
                     .beginTransaction()
                     .replace(R.id.fragmentContainer, register)
                     .addToBackStack(null);
-// Commit the transaction
             transaction.commit();
         }
     }
