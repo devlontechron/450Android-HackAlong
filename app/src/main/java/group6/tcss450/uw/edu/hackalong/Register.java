@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -27,8 +28,10 @@ public class Register extends MainPage {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        View v = inflater.inflate(R.layout.fragment_register, container, false);
+        Button b = (Button) v.findViewById(R.id.registrationbutton);
+        b.setOnClickListener(this);
+        return v;
     }
 
     @Override
@@ -47,10 +50,13 @@ public class Register extends MainPage {
         String username = "";
         String password = "";
         String reenterPassword = "";
-        if (mListener != null && password.equals(reenterPassword)) {
-            mListener.onFragmentInteraction("events", username, password);
-        }
-
+//        if (mListener != null && password.equals(reenterPassword)) {
+            switch (v.getId()) {
+                case R.id.registrationbutton:
+                    mListener.onFragmentInteraction("events", username, password);
+                    break;
+            }
+//        }
     }
 
     @Override
