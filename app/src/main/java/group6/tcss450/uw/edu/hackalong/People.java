@@ -1,3 +1,8 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * People.java
+ * May 5, 2017
+ */
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
@@ -10,31 +15,35 @@ import android.view.ViewGroup;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link People.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * This class is unimplemented, but will display a list of people.
  */
-public class People extends Fragment {
-
+public class People extends MainPage {
+    /* the fragment listener */
     private OnFragmentInteractionListener mListener;
 
+    /**
+     * Required empty constructor
+     */
     public People() {
     }
 
-
+    /**
+     * Creates the view for the fragment.
+     * @param inflater inflates the fragment
+     * @param container the container for the fragment
+     * @param savedInstanceState the previous state, if any
+     * @return returns the inflated view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_people, container, false);
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
+    /**
+     * Checks to make sure the context is an OnFragmentInteractionListener
+     * @param context the context for this class
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -46,23 +55,13 @@ public class People extends Fragment {
         }
     }
 
+    /**
+     * Calls the super method and sets the mListener to null
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
 }

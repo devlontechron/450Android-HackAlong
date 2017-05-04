@@ -1,3 +1,8 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * MainPage.java
+ * May 5, 2017
+ */
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
@@ -11,19 +16,25 @@ import android.widget.Button;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MainPage.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * This class controls the main landing page with login credentials and login and register buttons
  */
 public class MainPage extends Fragment implements View.OnClickListener{
-
+    /* the fragment listener */
     private OnFragmentInteractionListener mListener;
 
+    /**
+     * Required empty constructor
+     */
     public MainPage() {
     }
 
-
+    /**
+     * This method inflates the fragment and creates the buttons included, then attaches listeners
+     * @param inflater inflates the fragment
+     * @param container the container that holds the fragment
+     * @param savedInstanceState the previous state, if any
+     * @return returns the inflated view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,6 +46,10 @@ public class MainPage extends Fragment implements View.OnClickListener{
         return v;
     }
 
+    /**
+     * This method checks the context and sets the mListener if successful
+     * @param context is the context of this class
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -46,12 +61,20 @@ public class MainPage extends Fragment implements View.OnClickListener{
         }
     }
 
+    /**
+     * This method calls the super method and sets the mListener to null
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
+    /**
+     * This method controls the actions related to the onClickListener and sends values to the
+     * onFragmentInteractionListener
+     * @param v is the view for this fragment
+     */
     @Override
     public void onClick(View v) {
         if (mListener != null) {
@@ -67,14 +90,7 @@ public class MainPage extends Fragment implements View.OnClickListener{
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * This interface holds the method used for changing fragments in the dashboard class.
      */
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(String fragment, String username, String password);

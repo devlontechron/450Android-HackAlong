@@ -1,3 +1,8 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * Register.java
+ * May 5, 2017
+ */
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
@@ -11,19 +16,25 @@ import android.widget.Button;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Register.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * This class controls the Registration fragment
  */
 public class Register extends MainPage {
-
+    /* The fragment listener */
     private OnFragmentInteractionListener mListener;
 
+    /**
+     * Required empty constructor
+     */
     public Register() {
     }
 
-
+    /**
+     * Creates the view for this fragment and attaches the button to listener
+     * @param inflater inflates the fragment
+     * @param container the container that holds the fragment
+     * @param savedInstanceState the previous state, if any
+     * @return returns the view for this fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,6 +44,10 @@ public class Register extends MainPage {
         return v;
     }
 
+    /**
+     * Checks the context to make sure it is an OnFragmentInteractionListener
+     * @param context is the context of this class
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -44,6 +59,11 @@ public class Register extends MainPage {
         }
     }
 
+    /**
+     * Controls the onClick function for the registration button and sends data for calling another
+     * fragment
+     * @param v is the view for this fragment
+     */
     @Override
     public void onClick(View v) {
         String username = "";
@@ -58,6 +78,9 @@ public class Register extends MainPage {
 //        }
     }
 
+    /**
+     * Calls the super method and sets the mListener to null
+     */
     @Override
     public void onDetach() {
         super.onDetach();
