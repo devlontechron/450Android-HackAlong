@@ -8,12 +8,14 @@ package group6.tcss450.uw.edu.hackalong;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -31,6 +33,7 @@ public class Register extends MainPage {
     /**
      * Required empty constructor
      */
+
     public Register() {
     }
 
@@ -50,6 +53,7 @@ public class Register extends MainPage {
         user = (EditText) v.findViewById(R.id.registername);
         pass = (EditText) v.findViewById(R.id.registerpassword);
         pass2 = (EditText) v.findViewById(R.id.reenterpassword);
+
         return v;
     }
 
@@ -86,6 +90,12 @@ public class Register extends MainPage {
                             mListener.onFragmentInteraction("events", username, password);
                             break;
                     }
+
+                } else{
+
+                    CharSequence badPW = "Incorrect Password or Email";
+                    Snackbar.make(v, badPW, Snackbar.LENGTH_SHORT);
+
                 }
             }
         }

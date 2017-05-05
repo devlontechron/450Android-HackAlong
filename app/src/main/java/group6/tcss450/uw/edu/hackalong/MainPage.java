@@ -9,17 +9,25 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import group6.tcss450.uw.edu.hackalong.tasks.LoginWebService;
 
 
 /**
  * This class controls the main landing page with login credentials and login and register buttons
  */
-public class MainPage extends Fragment implements View.OnClickListener{
+public class MainPage extends Fragment implements View.OnClickListener, LoginWebService.OnLoginTaskCompleteListener {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
     /* the email textbox */
@@ -84,17 +92,55 @@ public class MainPage extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if (mListener != null) {
-            if (email.getText().length() > 0 && pwd.getText().length() > 0) {
-                switch (v.getId()) {
+                 switch (v.getId()) {
                     case R.id.loginbutton:
-                        mListener.onFragmentInteraction("events", email.getText().toString(), pwd.getText().toString());
+                        if(email.getText().length()>0 && pwd.getText().length()>0) {
+                            LoginWebService task = new LoginWebService(MainPage.this);
+                            task.execute();
+                            //mListener.onFragmentInteraction("events", email.getText().toString(), pwd.getText().toString());
+                            break;
+                        }
                         break;
+
                     case R.id.registerbutton:
                         mListener.onFragmentInteraction("register", null, null);
                         break;
-                }
+
+                     default:
+                         break;
+
             }
         }
+    }
+
+    public String getLogin(){
+        Log.e("DEBUGGER", email.getText().toString());
+        return email.getText().toString();
+
+    }
+
+    private void parseJSON(final String json) {
+
+        try {
+            JSONObject object = new JSONObject(json);
+            if (object.get("UPW").toString().equals(pwd.getText().toString())){
+                mListener.onFragmentInteraction("events", email.getText().toString(), pwd.getText().toString());
+        }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onLoginTaskCompletion(String message) {
+
+        parseJSON(message);
+    }
+
+    @Override
+    public void onLoginTaskError(String error) {
+
     }
 
     /**

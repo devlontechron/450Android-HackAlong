@@ -60,10 +60,7 @@ public class Events extends MainPage implements EventsWebService.OnEventsTaskCom
     public void onClick(View view){
         EventsWebService task = new EventsWebService(Events.this);
         task.execute();
-
-
         updateContent(JSONRecieved);
-
     }
 
     private void updateContent(String JSONRecieved) {

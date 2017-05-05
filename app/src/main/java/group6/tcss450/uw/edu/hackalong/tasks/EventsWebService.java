@@ -23,29 +23,29 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... none) {
         String response = "";
-        HttpURLConnection urlConnection = null;
+    HttpURLConnection urlConnection = null;
         try {
-            URL urlObject = new URL("http://cssgate.insttech.washington.edu/~d1durham/getAllEvents.php");
-            urlConnection = (HttpURLConnection) urlObject.openConnection();
+        URL urlObject = new URL("http://cssgate.insttech.washington.edu/~d1durham/getAllEvents.php");
+        urlConnection = (HttpURLConnection) urlObject.openConnection();
 
-            InputStream content = urlConnection.getInputStream();
+        InputStream content = urlConnection.getInputStream();
 
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
-            String s = "";
-            while ((s = buffer.readLine()) != null) {
-                response += s;
-            }
-
-        } catch (Exception e) {
-            response = "Unable to connect, Reason: "
-                    + e.getMessage();
-        } finally {
-            if (urlConnection != null)
-                urlConnection.disconnect();
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+        String s = "";
+        while ((s = buffer.readLine()) != null) {
+            response += s;
         }
 
-        return response;
+    } catch (Exception e) {
+        response = "Unable to connect, Reason: "
+                + e.getMessage();
+    } finally {
+        if (urlConnection != null)
+            urlConnection.disconnect();
     }
+
+        return response;
+}
 
     @Override
     protected void onPostExecute(String result) {
