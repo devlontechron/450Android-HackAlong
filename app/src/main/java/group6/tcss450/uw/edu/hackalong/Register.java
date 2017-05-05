@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 /**
@@ -21,7 +22,12 @@ import android.widget.Button;
 public class Register extends MainPage {
     /* The fragment listener */
     private OnFragmentInteractionListener mListener;
-
+    /* The email address box */
+    EditText user;
+    /* The password box */
+    EditText pass;
+    /* The password verification box */
+    EditText pass2;
     /**
      * Required empty constructor
      */
@@ -41,6 +47,9 @@ public class Register extends MainPage {
         View v = inflater.inflate(R.layout.fragment_register, container, false);
         Button b = (Button) v.findViewById(R.id.registrationbutton);
         b.setOnClickListener(this);
+        user = (EditText) v.findViewById(R.id.registername);
+        pass = (EditText) v.findViewById(R.id.registerpassword);
+        pass2 = (EditText) v.findViewById(R.id.reenterpassword);
         return v;
     }
 
@@ -66,16 +75,20 @@ public class Register extends MainPage {
      */
     @Override
     public void onClick(View v) {
-        String username = "";
-        String password = "";
-        String reenterPassword = "";
-//        if (mListener != null && password.equals(reenterPassword)) {
-            switch (v.getId()) {
-                case R.id.registrationbutton:
-                    mListener.onFragmentInteraction("events", username, password);
-                    break;
+        if (mListener != null) {
+            if (user.getText().length() > 0 && pass.getText().length() > 0) {
+                String password = pass.getText().toString();
+                String username = user.getText().toString();
+                String password2 = pass2.getText().toString();
+                if (password.equals(password2)) {
+                    switch (v.getId()) {
+                        case R.id.registrationbutton:
+                            mListener.onFragmentInteraction("events", username, password);
+                            break;
+                    }
+                }
             }
-//        }
+        }
     }
 
     /**
