@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 /**
@@ -21,7 +22,10 @@ import android.widget.Button;
 public class MainPage extends Fragment implements View.OnClickListener{
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
-
+    /* the email textbox */
+    EditText email;
+    /* the password textbox */
+    EditText pwd;
     /**
      * Required empty constructor
      */
@@ -43,6 +47,8 @@ public class MainPage extends Fragment implements View.OnClickListener{
         b.setOnClickListener(this);
         b = (Button) v.findViewById(R.id.registerbutton);
         b.setOnClickListener(this);
+        email = (EditText) v.findViewById(R.id.loginemail);
+        pwd = (EditText) v.findViewById(R.id.loginpassword);
         return v;
     }
 
@@ -78,13 +84,15 @@ public class MainPage extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if (mListener != null) {
-            switch (v.getId()) {
-                case R.id.loginbutton:
-                    mListener.onFragmentInteraction("events", null, null);
-                    break;
-                case R.id.registerbutton:
-                    mListener.onFragmentInteraction("register", null, null);
-                    break;
+            if (email.getText().length() > 0 && pwd.getText().length() > 0) {
+                switch (v.getId()) {
+                    case R.id.loginbutton:
+                        mListener.onFragmentInteraction("events", email.getText().toString(), pwd.getText().toString());
+                        break;
+                    case R.id.registerbutton:
+                        mListener.onFragmentInteraction("register", null, null);
+                        break;
+                }
             }
         }
     }
