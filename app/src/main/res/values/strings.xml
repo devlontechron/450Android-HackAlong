@@ -15,5 +15,6 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="search">Search for Hackathons...</string>
+    <string name ="update"> Update</string>>
 
 </resources>

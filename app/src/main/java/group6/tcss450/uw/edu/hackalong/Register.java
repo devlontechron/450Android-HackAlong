@@ -8,18 +8,26 @@ package group6.tcss450.uw.edu.hackalong;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import group6.tcss450.uw.edu.hackalong.tasks.RegisterWebService;
 
 
 /**
  * This class controls the Registration fragment
  */
-public class Register extends MainPage {
+public class Register extends MainPage implements RegisterWebService.OnRegisterTaskCompleteListener  {
     /* The fragment listener */
     private OnFragmentInteractionListener mListener;
     /* The email address box */
@@ -31,6 +39,10 @@ public class Register extends MainPage {
     /**
      * Required empty constructor
      */
+
+    String password;
+    String username;
+
     public Register() {
     }
 
@@ -50,6 +62,7 @@ public class Register extends MainPage {
         user = (EditText) v.findViewById(R.id.registername);
         pass = (EditText) v.findViewById(R.id.registerpassword);
         pass2 = (EditText) v.findViewById(R.id.reenterpassword);
+
         return v;
     }
 
@@ -77,15 +90,20 @@ public class Register extends MainPage {
     public void onClick(View v) {
         if (mListener != null) {
             if (user.getText().length() > 0 && pass.getText().length() > 0) {
-                String password = pass.getText().toString();
-                String username = user.getText().toString();
+                password = pass.getText().toString();
+                username = user.getText().toString().toLowerCase();
                 String password2 = pass2.getText().toString();
-                if (password.equals(password2)) {
+                if (password.equals(password2) && password.length()>4) {
                     switch (v.getId()) {
                         case R.id.registrationbutton:
-                            mListener.onFragmentInteraction("events", username, password);
+                            RegisterWebService task = new RegisterWebService(Register.this,username,password);
+                            task.execute();
+                            //mListener.onFragmentInteraction("events", username, password);
                             break;
                     }
+
+                } else{
+                    Toast.makeText( getActivity().getApplicationContext(), "The password is too short or dose not match.",Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -100,4 +118,23 @@ public class Register extends MainPage {
         mListener = null;
     }
 
+    @Override
+    public void onRegisterTaskCompletion(String message) {
+        parseRegJSON(message);
+
+    }
+
+    private void parseRegJSON(String message) {
+        if (message.equals("1")) {
+            mListener.onFragmentInteraction("events", username, password);
+            Toast.makeText( getActivity().getApplicationContext(), "Successful Registration!",Toast.LENGTH_LONG).show();
+        } else{
+            Toast.makeText( getActivity().getApplicationContext(), "That email is already in use",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onRegisterTaskError(String error) {
+
+    }
 }
