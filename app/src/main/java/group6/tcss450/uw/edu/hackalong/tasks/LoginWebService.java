@@ -1,3 +1,9 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * LoginWebServices.java
+ * May 5, 2017
+ */
+
 package group6.tcss450.uw.edu.hackalong.tasks;
 
 
@@ -21,12 +27,22 @@ public class LoginWebService  extends AsyncTask<Void, Void, String> {
     private LoginWebService.OnLoginTaskCompleteListener mListener;
     String UE;
 
+    /**
+     * simple constructer to accapt information to later be used
+     * @param listner
+     * @param username
+     */
     public LoginWebService(final LoginWebService.OnLoginTaskCompleteListener listner, String username) {
         super();
         mListener = listner;
         UE = username;
     }
 
+    /**
+     * reaching out to external database for login user to get user information bassed off of email
+     * @param none
+     * @return
+     */
     @Override
     protected String doInBackground(Void... none) {
         String response = "";
@@ -54,7 +70,10 @@ public class LoginWebService  extends AsyncTask<Void, Void, String> {
 
         return response;
     }
-
+    /**
+     * checks if connection was successful and calls methods
+     * @param result
+     */
     @Override
     protected void onPostExecute(String result) {
         if (result.startsWith("Unable to")) {
@@ -65,7 +84,9 @@ public class LoginWebService  extends AsyncTask<Void, Void, String> {
         }
 
     }
-
+    /**
+     * methods for other methods
+     */
     public interface OnLoginTaskCompleteListener {
         void onLoginTaskCompletion(String message);
 

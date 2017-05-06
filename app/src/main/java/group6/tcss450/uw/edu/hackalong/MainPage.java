@@ -86,8 +86,7 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
     }
 
     /**
-     * This method controls the actions related to the onClickListener and sends values to the
-     * onFragmentInteractionListener
+     * This method controls the actions related to the onClickListener
      * @param v is the view for this fragment
      */
     @Override
@@ -98,7 +97,6 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
                         if(email.getText().length()>0 && pwd.getText().length()>0) {
                             LoginWebService task = new LoginWebService(MainPage.this, email.getText().toString());
                             task.execute();
-                            //mListener.onFragmentInteraction("events", email.getText().toString(), pwd.getText().toString());
                             break;
                         }
                         break;
@@ -114,6 +112,14 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
         }
     }
 
+    /**
+     * parses the JSON recieved from LoginWebService
+     * checks and compares email and password to verify.
+     * calls next fragment if confirmed
+     * sends values to the
+     * onFragmentInteractionListener
+     * @param json
+     */
     private void parseJSON(final String json) {
         JSONArray mObj = null;
         try {
@@ -137,6 +143,11 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
 
     }
 
+    /**
+     * return froma successful async task of LoginWebService
+     * calls parseJSON for parsiong the return from external web service
+     * @param message
+     */
     @Override
     public void onLoginTaskCompletion(String message) {
 
@@ -144,6 +155,10 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
 
     }
 
+    /**
+     * return from the LoginWebService async task fail
+     * @param error
+     */
     @Override
     public void onLoginTaskError(String error) {
 
