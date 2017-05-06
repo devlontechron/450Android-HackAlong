@@ -7,4 +7,4 @@ Features implemented:
   
 Use case:
   The app features the Events page showing a listing of events so far, which are retrieved using an external API.
-  the API inserts data into our database and we then retireive the events list from our DB. 
+  the API inserts data into our database and we then retrieve the events list from our DB. 
