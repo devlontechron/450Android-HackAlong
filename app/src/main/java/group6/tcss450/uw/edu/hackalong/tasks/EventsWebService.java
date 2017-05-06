@@ -1,3 +1,9 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * EventsWebServices.java
+ * May 5, 2017
+ */
+
 package group6.tcss450.uw.edu.hackalong.tasks;
 
 import android.os.AsyncTask;
@@ -14,12 +20,21 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
 
     private OnEventsTaskCompleteListener mListener;
 
+    /**
+     * a constructor
+     * @param listner
+     */
     public EventsWebService(final OnEventsTaskCompleteListener listner) {
         super();
         mListener = listner;
     }
 
-
+    /**
+     * Async task for getting Events from database
+     * calls external web service of database to retrieve all events and information
+     * returns JSON response
+     * @return response
+     */
     @Override
     protected String doInBackground(Void... none) {
         String response = "";
@@ -46,7 +61,10 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
 
         return response;
 }
-
+    /**
+     * checks if connection was successful and calls methods
+     * @param result
+     */
     @Override
     protected void onPostExecute(String result) {
         if (result.startsWith("Unable to")) {
@@ -57,7 +75,9 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
         }
 
     }
-
+    /**
+     * methods for other methods
+     */
     public interface OnEventsTaskCompleteListener {
         void onEventsTaskCompletion(String message);
         void onEventsTaskError(String error);

@@ -1,3 +1,9 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * RegisterWebServices.java
+ * May 5, 2017
+ */
+
 package group6.tcss450.uw.edu.hackalong.tasks;
 
 
@@ -18,14 +24,26 @@ public class RegisterWebService extends AsyncTask<Void, Void, String> {
     private String userE;
     private String userPW;
 
+    /**
+     * simple constructor for class
+     * @param listner
+     * @param userEmail
+     * @param userPassW
+     */
     public RegisterWebService(final OnRegisterTaskCompleteListener listner, String userEmail, String userPassW) {
         super();
         mListener = listner;
         userE = userEmail;
         userPW = userPassW;
     }
-   
-   
+
+    /**
+     * Async task for Registering a new user
+     * calls external web service of database to retrieve user email and password
+     * returns JSON response
+     * @param params
+     * @return
+     */
     @Override
     protected String doInBackground(Void... params) {
         String response = "";
@@ -53,7 +71,10 @@ public class RegisterWebService extends AsyncTask<Void, Void, String> {
         return response;
     }
 
-
+    /**
+     * checks if connection was successful and calls methods
+     * @param result
+     */
     @Override
     protected void onPostExecute(String result) {
         if (result.startsWith("Unable to")) {
@@ -65,6 +86,9 @@ public class RegisterWebService extends AsyncTask<Void, Void, String> {
 
     }
 
+    /**
+     * methods for other methods
+     */
     public interface OnRegisterTaskCompleteListener {
         void onRegisterTaskCompletion(String message);
         void onRegisterTaskError(String error);

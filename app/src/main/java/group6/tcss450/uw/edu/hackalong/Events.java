@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +57,10 @@ public class Events extends MainPage implements EventsWebService.OnEventsTaskCom
 
     }
 
+    /**
+     * handles events in the event of clicking the update button to get Event information
+     * @param view
+     */
     @Override
     public void onClick(View view){
         EventsWebService task = new EventsWebService(Events.this);
@@ -63,12 +68,19 @@ public class Events extends MainPage implements EventsWebService.OnEventsTaskCom
         updateContent(JSONRecieved);
     }
 
+    /**
+     * helper method that updates textView after Async task of recieving info
+     * @param JSONRecieved
+     */
     private void updateContent(String JSONRecieved) {
         TextView display = (TextView) getActivity().findViewById(R.id.EventsText);
         display.setText(JSONRecieved);
     }
 
-
+    /**
+     * events for once the fragment is attached to an activity
+     * @param context is the context of this class
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -81,36 +93,39 @@ public class Events extends MainPage implements EventsWebService.OnEventsTaskCom
         }
     }
 
+    /**
+     * called once the fragment is about to leave the activity
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-
+    /**
+     * parses the recieved JSON from async task EventsWebService
+     * @param json
+     */
     private void parseJSON(final String json) {
         mTextView.setText(json);
-        /*
-        try {
-            JSONObject object = new JSONObject(json);
-            if (object.getInt("error_code") == 0) {
-
-                mTextView.setText(object.get);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
     }
 
+    /**
+     * return from a successful Async task of EventsWebService
+     * @param message
+     */
     @Override
     public void onEventsTaskCompletion(String message) {
         parseJSON(message);
     }
-
+    /**
+     * return from a failed Async task of EventsWebService
+     * toast notification of error
+     * @param error
+     */
     @Override
     public void onEventsTaskError(String error) {
-
+        Toast.makeText( getActivity().getApplicationContext(), "An error occured while getting the Events. Try again Later",Toast.LENGTH_LONG).show();
     }
 
 

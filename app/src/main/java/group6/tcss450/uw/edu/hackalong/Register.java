@@ -82,8 +82,8 @@ public class Register extends MainPage implements RegisterWebService.OnRegisterT
     }
 
     /**
-     * Controls the onClick function for the registration button and sends data for calling another
-     * fragment
+     * Controls the onClick function for the registration button
+     * Calls the Async task to reach databse for registering a new user
      * @param v is the view for this fragment
      */
     @Override
@@ -118,12 +118,21 @@ public class Register extends MainPage implements RegisterWebService.OnRegisterT
         mListener = null;
     }
 
+    /**
+     * return from the successful Async task RegisterWebService
+     * @param message
+     */
     @Override
     public void onRegisterTaskCompletion(String message) {
         parseRegJSON(message);
 
     }
 
+    /**
+     * parses the return message from external web service and confirms registration
+     * after confirm, sends data and calls another frgament
+     * @param message
+     */
     private void parseRegJSON(String message) {
         if (message.equals("1")) {
             mListener.onFragmentInteraction("events", username, password);
@@ -133,8 +142,12 @@ public class Register extends MainPage implements RegisterWebService.OnRegisterT
         }
     }
 
+    /**
+     * return failure from Async task of RegisterWebServices
+     * @param error
+     */
     @Override
     public void onRegisterTaskError(String error) {
-
+        Toast.makeText( getActivity().getApplicationContext(), "An error with the web service has occured. Try again later.",Toast.LENGTH_LONG).show();
     }
 }
