@@ -1,12 +1,12 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="8dp"
+    android:layout_marginStart="0dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_dark"
     tools:context="group6.tcss450.uw.edu.hackalong.MainPage"
-    android:layout_marginLeft="8dp">
+    android:layout_marginLeft="0dp">
 
     <TextView
         android:id="@+id/textView2"

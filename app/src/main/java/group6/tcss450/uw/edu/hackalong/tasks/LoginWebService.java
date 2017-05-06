@@ -19,10 +19,12 @@ import group6.tcss450.uw.edu.hackalong.R;
 public class LoginWebService  extends AsyncTask<Void, Void, String> {
 
     private LoginWebService.OnLoginTaskCompleteListener mListener;
+    String UE;
 
-    public LoginWebService(final LoginWebService.OnLoginTaskCompleteListener listner) {
+    public LoginWebService(final LoginWebService.OnLoginTaskCompleteListener listner, String username) {
         super();
         mListener = listner;
+        UE = username;
     }
 
     @Override
@@ -30,7 +32,8 @@ public class LoginWebService  extends AsyncTask<Void, Void, String> {
         String response = "";
         HttpURLConnection urlConnection = null;
         try {
-            URL urlObject = new URL("http://cssgate.insttech.washington.edu/~d1durham/getUser.php?UE=d1durham@uw.edu");
+            Log.e("HELP", UE);
+            URL urlObject = new URL("http://cssgate.insttech.washington.edu/~d1durham/getUser.php?UE="+UE);
             urlConnection = (HttpURLConnection) urlObject.openConnection();
 
             InputStream content = urlConnection.getInputStream();

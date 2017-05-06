@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -95,7 +96,7 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
                  switch (v.getId()) {
                     case R.id.loginbutton:
                         if(email.getText().length()>0 && pwd.getText().length()>0) {
-                            LoginWebService task = new LoginWebService(MainPage.this);
+                            LoginWebService task = new LoginWebService(MainPage.this, email.getText().toString());
                             task.execute();
                             //mListener.onFragmentInteraction("events", email.getText().toString(), pwd.getText().toString());
                             break;
@@ -113,29 +114,34 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
         }
     }
 
-    public String getLogin(){
-        Log.e("DEBUGGER", email.getText().toString());
-        return email.getText().toString();
-
-    }
-
     private void parseJSON(final String json) {
-
+        JSONArray mObj = null;
         try {
-            JSONObject object = new JSONObject(json);
-            if (object.get("UPW").toString().equals(pwd.getText().toString())){
-                mListener.onFragmentInteraction("events", email.getText().toString(), pwd.getText().toString());
-        }
+            mObj = new JSONArray(json);
+            JSONObject userInfo = mObj.getJSONObject(0);
+            String pw = userInfo.getString("UPW");
+            if(pw.equals(pwd.getText().toString())){
+                mListener.onFragmentInteraction("events", email.getText().toString(), pw);
 
+            }else{
+                Toast.makeText( getActivity().getApplicationContext(), "The password is incorrect.",Toast.LENGTH_LONG).show();
+                //throw error toast
+            }
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText( getActivity().getApplicationContext(), "The email is incorrect.",Toast.LENGTH_LONG).show();
         }
+
+
+
+
     }
 
     @Override
     public void onLoginTaskCompletion(String message) {
 
-        parseJSON(message);
+            parseJSON(message);
+
     }
 
     @Override

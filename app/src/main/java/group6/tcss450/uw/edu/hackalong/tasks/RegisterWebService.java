@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class RegisterWebService  extends AsyncTask<Void, Void, String> {
+public class RegisterWebService extends AsyncTask<Void, Void, String> {
 
 
 
@@ -18,9 +18,11 @@ public class RegisterWebService  extends AsyncTask<Void, Void, String> {
     private String userE;
     private String userPW;
 
-    public RegisterWebService(final OnRegisterTaskCompleteListener listner) {
+    public RegisterWebService(final OnRegisterTaskCompleteListener listner, String userEmail, String userPassW) {
         super();
         mListener = listner;
+        userE = userEmail;
+        userPW = userPassW;
     }
    
    
