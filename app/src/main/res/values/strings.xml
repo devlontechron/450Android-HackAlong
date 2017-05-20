@@ -14,9 +14,19 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="search">Search for Hackathons...</string>
-    <string name ="update"> Update</string>>
-    <string name = "NoEvents"> No Events Listed</string>
-    <string name = "PWInfo"> *Passwords must be at least 5 characters long</string>
+    <string name="update"> Update</string>>
+    <string name="NoEvents"> No Events Listed</string>
+    <string name="PWInfo"> *Passwords must be at least 5 characters long</string>
+
+    <string name="AppInfo">App Info</string>
+    <string name="Class">TCSS 450 Spring 2017</string>
+    <string name="professor">Professor: Charles Bryan  </string>
+    <string name="school">University Of Washingtong Tacoma</string>
+    <string name="author">Authors: Clayton Blair, Devin Durham, Thanh Le</string>
+    <string name="contact">Contact info: d1durham@uw.edu</string>
+    <string name="setting">Setting</string>
+    <string name="logout">Logout</string>
+
 
 
 </resources>
