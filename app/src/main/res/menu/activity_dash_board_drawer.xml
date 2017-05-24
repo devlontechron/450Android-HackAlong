@@ -6,6 +6,12 @@
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Settings" />
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_app_info"
+            android:title="@string/AppInfo" />
     </group>
 
 
