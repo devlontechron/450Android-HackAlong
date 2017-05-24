@@ -30,7 +30,7 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
     }
 
     /**
-     * Async task for getting Events from database
+     * Async task for getting EventsFragment from database
      * calls external web service of database to retrieve all events and information
      * returns JSON response
      * @return response

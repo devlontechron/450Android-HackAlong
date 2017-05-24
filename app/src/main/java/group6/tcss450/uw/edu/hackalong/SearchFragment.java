@@ -1,7 +1,7 @@
 /**
  * TCSS 450 Spring 2017 Group 6
- * AppInfo.java
- * May 19, 2017
+ * SearchFragment.java
+ * May 5, 2017
  */
 package group6.tcss450.uw.edu.hackalong;
 
@@ -13,35 +13,33 @@ import android.view.ViewGroup;
 
 
 /**
- * This class controls the user profile
+ * Unimplemented class, will allow searching for people or events
  */
-public class AppInfo extends MainPage {
-    /* the fragment listener */
+public class SearchFragment extends MainPageFragment {
+    /* The fragment listener */
     private OnFragmentInteractionListener mListener;
 
     /**
      * Required empty constructor
      */
-    public AppInfo() {
+    public SearchFragment() {
     }
 
     /**
-     * Creates the view for the fragment
-     *
-     * @param inflater           inflates the fragment
-     * @param container          the container that holds the fragment
+     * Creates the view for this fragment
+     * @param inflater inflates the fragment
+     * @param container the container that holds the fragment
      * @param savedInstanceState the previous state, if any
-     * @return returns the view for this fragment
+     * @return returns the inflated view
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
     /**
-     * Checks the context to make sure it is an OnFragmentInteractionListener
-     *
+     * Checks to see if the context is an OnFragmentInteractionListener
      * @param context is the context of this class
      */
     @Override
@@ -56,11 +54,12 @@ public class AppInfo extends MainPage {
     }
 
     /**
-     * Calls the super method and sets the mListener to null
+     * Calls the super method and sets mListener to null
      */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
+
 }

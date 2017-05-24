@@ -1,16 +1,13 @@
 /**
  * TCSS 450 Spring 2017 Group 6
- * MainPage.java
+ * MainPageFragment.java
  * May 5, 2017
  */
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +25,7 @@ import group6.tcss450.uw.edu.hackalong.tasks.LoginWebService;
 /**
  * This class controls the main landing page with login credentials and login and register buttons
  */
-public class MainPage extends Fragment implements View.OnClickListener, LoginWebService.OnLoginTaskCompleteListener {
+public class MainPageFragment extends Fragment implements View.OnClickListener, LoginWebService.OnLoginTaskCompleteListener {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
     /* the email textbox */
@@ -38,7 +35,7 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
     /**
      * Required empty constructor
      */
-    public MainPage() {
+    public MainPageFragment() {
     }
 
     /**
@@ -95,7 +92,7 @@ public class MainPage extends Fragment implements View.OnClickListener, LoginWeb
                  switch (v.getId()) {
                     case R.id.loginbutton:
                         if(email.getText().length()>0 && pwd.getText().length()>0) {
-                            LoginWebService task = new LoginWebService(MainPage.this, email.getText().toString());
+                            LoginWebService task = new LoginWebService(MainPageFragment.this, email.getText().toString());
                             task.execute();
                             break;
                         }

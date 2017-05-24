@@ -1,7 +1,7 @@
 /**
  * TCSS 450 Spring 2017 Group 6
- * Setting.java
- * May 19, 2017
+ * PeopleFragment.java
+ * May 5, 2017
  */
 package group6.tcss450.uw.edu.hackalong;
 
@@ -13,36 +13,34 @@ import android.view.ViewGroup;
 
 
 /**
- * This class controls the user profile
+ * This class is unimplemented, but will display a list of people.
  */
-public class Setting extends MainPage {
+public class PeopleFragment extends MainPageFragment {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
 
     /**
      * Required empty constructor
      */
-    public Setting() {
+    public PeopleFragment() {
     }
 
     /**
-     * Creates the view for the fragment
-     *
-     * @param inflater           inflates the fragment
-     * @param container          the container that holds the fragment
+     * Creates the view for the fragment.
+     * @param inflater inflates the fragment
+     * @param container the container for the fragment
      * @param savedInstanceState the previous state, if any
-     * @return returns the view for this fragment
+     * @return returns the inflated view
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_people, container, false);
     }
 
     /**
-     * Checks the context to make sure it is an OnFragmentInteractionListener
-     *
-     * @param context is the context of this class
+     * Checks to make sure the context is an OnFragmentInteractionListener
+     * @param context the context for this class
      */
     @Override
     public void onAttach(Context context) {
@@ -63,4 +61,5 @@ public class Setting extends MainPage {
         super.onDetach();
         mListener = null;
     }
+
 }

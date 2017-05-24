@@ -1,47 +1,47 @@
 /**
  * TCSS 450 Spring 2017 Group 6
- * Search.java
- * May 5, 2017
+ * AppInfoFragment.java
+ * May 19, 2017
  */
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
 /**
- * Unimplemented class, will allow searching for people or events
+ * This class controls the user profile
  */
-public class Search extends MainPage {
-    /* The fragment listener */
+public class AppInfoFragment extends MainPageFragment {
+    /* the fragment listener */
     private OnFragmentInteractionListener mListener;
 
     /**
      * Required empty constructor
      */
-    public Search() {
+    public AppInfoFragment() {
     }
 
     /**
-     * Creates the view for this fragment
-     * @param inflater inflates the fragment
-     * @param container the container that holds the fragment
+     * Creates the view for the fragment
+     *
+     * @param inflater           inflates the fragment
+     * @param container          the container that holds the fragment
      * @param savedInstanceState the previous state, if any
-     * @return returns the inflated view
+     * @return returns the view for this fragment
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     /**
-     * Checks to see if the context is an OnFragmentInteractionListener
+     * Checks the context to make sure it is an OnFragmentInteractionListener
+     *
      * @param context is the context of this class
      */
     @Override
@@ -56,12 +56,11 @@ public class Search extends MainPage {
     }
 
     /**
-     * Calls the super method and sets mListener to null
+     * Calls the super method and sets the mListener to null
      */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
 }

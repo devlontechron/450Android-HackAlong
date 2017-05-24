@@ -1,6 +1,6 @@
 /**
  * TCSS 450 Spring 2017 Group 6
- * Events.java
+ * EventsFragment.java
  * May 5, 2017
  */
 package group6.tcss450.uw.edu.hackalong;
@@ -8,7 +8,6 @@ package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +15,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import group6.tcss450.uw.edu.hackalong.tasks.EventsWebService;
 
 
 /**
  * This class holds the different events information sent to it by the webservice
  */
-public class Events extends MainPage implements EventsWebService.OnEventsTaskCompleteListener {
+public class EventsFragment extends MainPageFragment implements EventsWebService.OnEventsTaskCompleteListener {
 
     private TextView mTextView;
-    private MainPage.OnFragmentInteractionListener mListener;
+    private MainPageFragment.OnFragmentInteractionListener mListener;
     String JSONRecieved;
 
 
@@ -36,7 +32,7 @@ public class Events extends MainPage implements EventsWebService.OnEventsTaskCom
     /**
      * Required empty constructor
      */
-    public Events() {
+    public EventsFragment() {
     }
 
     /**
@@ -63,7 +59,7 @@ public class Events extends MainPage implements EventsWebService.OnEventsTaskCom
      */
     @Override
     public void onClick(View view){
-        EventsWebService task = new EventsWebService(Events.this);
+        EventsWebService task = new EventsWebService(EventsFragment.this);
         task.execute();
         updateContent(JSONRecieved);
     }
@@ -125,7 +121,7 @@ public class Events extends MainPage implements EventsWebService.OnEventsTaskCom
      */
     @Override
     public void onEventsTaskError(String error) {
-        Toast.makeText( getActivity().getApplicationContext(), "An error occured while getting the Events. Try again Later",Toast.LENGTH_LONG).show();
+        Toast.makeText( getActivity().getApplicationContext(), "An error occured while getting the EventsFragment. Try again Later",Toast.LENGTH_LONG).show();
     }
 
 

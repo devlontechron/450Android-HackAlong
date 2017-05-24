@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="group6.tcss450.uw.edu.hackalong.Profile">
+    tools:context="group6.tcss450.uw.edu.hackalong.ProfileFragment">
 
     <TextView
         android:layout_width="match_parent"

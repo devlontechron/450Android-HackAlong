@@ -3,7 +3,7 @@
     android:id="@+id/settinglayoutID"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="group6.tcss450.uw.edu.hackalong.Setting">
+    tools:context="group6.tcss450.uw.edu.hackalong.SettingFragment">
 
 
     <TextView

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragmentContainer"
-    tools:context="group6.tcss450.uw.edu.hackalong.DashBoard">
+    tools:context="group6.tcss450.uw.edu.hackalong.DashBoardActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

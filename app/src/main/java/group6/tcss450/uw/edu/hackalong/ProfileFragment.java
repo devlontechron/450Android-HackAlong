@@ -1,14 +1,12 @@
 /**
  * TCSS 450 Spring 2017 Group 6
- * Profile.java
+ * ProfileFragment.java
  * May 5, 2017
  */
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +15,14 @@ import android.view.ViewGroup;
 /**
  * This class controls the user profile
  */
-public class Profile extends MainPage {
+public class ProfileFragment extends MainPageFragment {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
 
     /**
      * Required empty constructor
      */
-    public Profile() {
+    public ProfileFragment() {
     }
 
     /**

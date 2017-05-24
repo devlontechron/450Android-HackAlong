@@ -1,16 +1,12 @@
 /**
  * TCSS 450 Spring 2017 Group 6
- * Register.java
+ * RegisterFragment.java
  * May 5, 2017
  */
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import group6.tcss450.uw.edu.hackalong.tasks.RegisterWebService;
 
 
 /**
  * This class controls the Registration fragment
  */
-public class Register extends MainPage implements RegisterWebService.OnRegisterTaskCompleteListener  {
+public class RegisterFragment extends MainPageFragment implements RegisterWebService.OnRegisterTaskCompleteListener  {
     /* The fragment listener */
     private OnFragmentInteractionListener mListener;
     /* The email address box */
@@ -43,7 +36,7 @@ public class Register extends MainPage implements RegisterWebService.OnRegisterT
     String password;
     String username;
 
-    public Register() {
+    public RegisterFragment() {
     }
 
     /**
@@ -96,7 +89,7 @@ public class Register extends MainPage implements RegisterWebService.OnRegisterT
                 if (password.equals(password2) && password.length()>4) {
                     switch (v.getId()) {
                         case R.id.registrationbutton:
-                            RegisterWebService task = new RegisterWebService(Register.this,username,password);
+                            RegisterWebService task = new RegisterWebService(RegisterFragment.this,username,password);
                             task.execute();
                             //mListener.onFragmentInteraction("events", username, password);
                             break;

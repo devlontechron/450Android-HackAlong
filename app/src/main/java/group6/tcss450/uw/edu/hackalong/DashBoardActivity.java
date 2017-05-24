@@ -6,10 +6,7 @@
 package group6.tcss450.uw.edu.hackalong;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,9 +20,9 @@ import android.view.MenuItem;
  * This class is the main fragment manager and main activity. It controlls the fragment switches
  * along with initializing and filling the fragment container
  */
-public class DashBoard extends AppCompatActivity
+public class DashBoardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        MainPage.OnFragmentInteractionListener {
+        MainPageFragment.OnFragmentInteractionListener {
 
     /**
      * This method creates the activity, initalizes the toolbar, the floating action button, the
@@ -52,7 +49,7 @@ public class DashBoard extends AppCompatActivity
         if(savedInstanceState == null) {
             if (findViewById(R.id.fragmentContainer) != null) {
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragmentContainer, new MainPage())
+                        .add(R.id.fragmentContainer, new MainPageFragment())
                         .commit();
             }
         }
@@ -124,8 +121,8 @@ public class DashBoard extends AppCompatActivity
     @Override
     public void onFragmentInteraction(String fragment, String username, String password) {
         if (fragment.equals("events")) {
-            Events events;
-            events = new Events();
+            EventsFragment events;
+            events = new EventsFragment();
             Bundle args = new Bundle();
             args.putSerializable(getString(R.string.username), username);
             args.putSerializable(getString(R.string.pass), password);
@@ -136,8 +133,8 @@ public class DashBoard extends AppCompatActivity
                     .addToBackStack(null);
             transaction.commit();
         } else if (fragment.equals("register")) {
-            Register register;
-            register = new Register();
+            RegisterFragment register;
+            register = new RegisterFragment();
             Bundle args = new Bundle();
             register.setArguments(args);
             FragmentTransaction transaction = getSupportFragmentManager()
