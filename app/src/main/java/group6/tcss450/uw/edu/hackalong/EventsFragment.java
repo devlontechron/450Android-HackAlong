@@ -8,10 +8,10 @@ package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +21,10 @@ import group6.tcss450.uw.edu.hackalong.tasks.EventsWebService;
 /**
  * This class holds the different events information sent to it by the webservice
  */
-public class EventsFragment extends MainPageFragment implements EventsWebService.OnEventsTaskCompleteListener {
+public class EventsFragment extends LoginFragment implements EventsWebService.OnEventsTaskCompleteListener {
 
     private TextView mTextView;
-    private MainPageFragment.OnFragmentInteractionListener mListener;
+    private LoginFragment.OnFragmentInteractionListener mListener;
     String JSONRecieved;
 
 
@@ -47,8 +47,9 @@ public class EventsFragment extends MainPageFragment implements EventsWebService
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_events, container, false);
         mTextView = (TextView) v.findViewById(R.id.EventsText);
-        Button getEventsButton = (Button) v.findViewById(R.id.EventsButton);
-        getEventsButton.setOnClickListener(this);
+        FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABEventSearch);
+        F.setOnClickListener(this);
+        loadEvents(v);
         return v;
 
     }
@@ -59,9 +60,22 @@ public class EventsFragment extends MainPageFragment implements EventsWebService
      */
     @Override
     public void onClick(View view){
+        if (mListener != null) {
+            switch (view.getId()) {
+                case R.id.FABEventSearch:
+                    mListener.onFragmentInteraction("eventSearch", null, null);
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    public void loadEvents(View view){
         EventsWebService task = new EventsWebService(EventsFragment.this);
         task.execute();
-        updateContent(JSONRecieved);
     }
 
     /**
@@ -70,7 +84,7 @@ public class EventsFragment extends MainPageFragment implements EventsWebService
      */
     private void updateContent(String JSONRecieved) {
         TextView display = (TextView) getActivity().findViewById(R.id.EventsText);
-        display.setText(JSONRecieved);
+     //   display.setText(JSONRecieved);
     }
 
     /**

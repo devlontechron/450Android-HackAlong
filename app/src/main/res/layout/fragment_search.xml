@@ -6,13 +6,23 @@
     tools:context="group6.tcss450.uw.edu.hackalong.SearchFragment">
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="307dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
+        android:id="@+id/searchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="75dp"
+        android:drawableRight="@drawable/ic_search_black_24dp"
         android:ems="10"
         android:hint="@string/search"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="25dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

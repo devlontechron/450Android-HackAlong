@@ -13,7 +13,7 @@
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="search">Search for Hackathons...</string>
+    <string name="search">Search...</string>
     <string name="update"> Update</string>>
     <string name="NoEvents"> No Events Listed</string>
     <string name="PWInfo"> *Passwords must be at least 5 characters long</string>
@@ -26,6 +26,7 @@
     <string name="contact">Contact info: d1durham@uw.edu</string>
     <string name="setting">Setting</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 
 </resources>

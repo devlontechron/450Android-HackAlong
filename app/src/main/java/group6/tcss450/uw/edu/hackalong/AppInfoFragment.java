@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 /**
  * This class controls the user profile
  */
-public class AppInfoFragment extends MainPageFragment {
+public class AppInfoFragment extends LoginFragment {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
 
@@ -36,7 +36,7 @@ public class AppInfoFragment extends MainPageFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_app_info, container, false);
     }
 
     /**
