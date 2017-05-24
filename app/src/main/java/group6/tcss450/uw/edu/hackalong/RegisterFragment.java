@@ -128,7 +128,7 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
      */
     private void parseRegJSON(String message) {
         if (message.equals("1")) {
-            mListener.onFragmentInteraction("events", username, password);
+            mListener.onFragmentInteraction("profileEdit", username, password);
             Toast.makeText( getActivity().getApplicationContext(), "Successful Registration!",Toast.LENGTH_LONG).show();
         } else{
             Toast.makeText( getActivity().getApplicationContext(), "That email is already in use",Toast.LENGTH_LONG).show();
