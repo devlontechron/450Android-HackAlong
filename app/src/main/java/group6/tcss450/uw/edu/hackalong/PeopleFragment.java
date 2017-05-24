@@ -7,6 +7,7 @@ package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,10 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_people, container, false);
-        mTextView = (TextView) v.findViewById(R.id.people1);
-        onClick(v);
+        mTextView = (TextView) v.findViewById(R.id.people3);
+        FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABPeopleSearch);
+        F.setOnClickListener(this);
+        loadPeopleData(v);
         return v;
 
     }
@@ -49,9 +52,22 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
 
     @Override
     public void onClick(View view){
+        if (mListener != null) {
+            switch (view.getId()) {
+                case R.id.FABPeopleSearch:
+                    mListener.onFragmentInteraction("eventSearch", null, null);
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    public void loadPeopleData(View v){
         PeopleWebService task = new PeopleWebService(PeopleFragment.this);
         task.execute();
-        //updateContent(JSONRecieved);
     }
 
     /**

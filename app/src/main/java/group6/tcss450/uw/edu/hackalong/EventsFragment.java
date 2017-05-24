@@ -8,6 +8,7 @@ package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,9 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_events, container, false);
         mTextView = (TextView) v.findViewById(R.id.EventsText);
-        onClick(v);
+        FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABEventSearch);
+        F.setOnClickListener(this);
+        loadEvents(v);
         return v;
 
     }
@@ -57,9 +60,22 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
      */
     @Override
     public void onClick(View view){
+        if (mListener != null) {
+            switch (view.getId()) {
+                case R.id.FABEventSearch:
+                    mListener.onFragmentInteraction("eventSearch", null, null);
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    public void loadEvents(View view){
         EventsWebService task = new EventsWebService(EventsFragment.this);
         task.execute();
-        //updateContent(JSONRecieved);
     }
 
     /**

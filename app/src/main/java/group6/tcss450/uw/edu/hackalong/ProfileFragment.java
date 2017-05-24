@@ -7,9 +7,11 @@ package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -18,7 +20,7 @@ import android.view.ViewGroup;
 public class ProfileFragment extends LoginFragment {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
-
+    private TextView mTextView;
     /**
      * Required empty constructor
      */
@@ -36,8 +38,28 @@ public class ProfileFragment extends LoginFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        mTextView = (TextView) v.findViewById(R.id.username);
+
+        FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.fab);
+        F.setOnClickListener(this);
+        return v;
     }
+
+    public void onClick(View v){
+        if (mListener != null) {
+            switch (v.getId()) {
+                case R.id.fab:
+                    mListener.onFragmentInteraction("profileEdit", null, null);
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+    }
+
 
     /**
      * Checks the context to make sure it is an OnFragmentInteractionListener

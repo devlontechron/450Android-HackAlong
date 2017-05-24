@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -73,18 +74,19 @@ public class MainActivity extends AppCompatActivity
      * @param menu is the options menu to be inflated
      * @return returns true once the menu is created
      */
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.dash_board, menu);
-        return true;
+        return false;
     }
-
+*/
     /**
      * This method controls what happens when a user clicks on an item in the options menu
      * @param item the item that was clicked on
      * @return returns true if the item is in the action_settings, calls the super method otherwise
      */
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
     /**
      * This method controls what happens when someone selects something in the items menu. It is
      * not yet implemented.
@@ -104,9 +106,25 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-         if (id == R.id.nav_Setting) {
+        switch(id){
+            case R.id.nav_Events:
+                onFragmentInteraction("events",null,null);
+                break;
+            case R.id.nav_People:
+                onFragmentInteraction("people",null,null);
+                break;
+            case R.id.nav_Profile:
+                onFragmentInteraction("profile",null,null);
+                break;
+            case R.id.nav_Setting:
+                onFragmentInteraction("settings",null,null);
+                break;
+            case R.id.nav_Info:
+                onFragmentInteraction("info",null,null);
+                break;
+            default:
+                //
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -120,28 +138,101 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     public void onFragmentInteraction(String fragment, String username, String password) {
-        if (fragment.equals("events")) {
-            EventsFragment events;
-            events = new EventsFragment();
-            Bundle args = new Bundle();
-            args.putSerializable(getString(R.string.username), username);
-            args.putSerializable(getString(R.string.pass), password);
-            events.setArguments(args);
-            FragmentTransaction transaction = getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, events)
-                    .addToBackStack(null);
-            transaction.commit();
-        } else if (fragment.equals("register")) {
-            RegisterFragment register;
-            register = new RegisterFragment();
-            Bundle args = new Bundle();
-            register.setArguments(args);
-            FragmentTransaction transaction = getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, register)
-                    .addToBackStack(null);
-            transaction.commit();
+        Bundle args;
+        FragmentTransaction transaction;
+
+        switch(fragment){
+            case "events":
+                EventsFragment events;
+                events = new EventsFragment();
+                args = new Bundle();
+                args.putSerializable(getString(R.string.username), username);
+                args.putSerializable(getString(R.string.pass), password);
+                events.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, events)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+            case "register":
+                RegisterFragment register;
+                register = new RegisterFragment();
+                args = new Bundle();
+                register.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, register)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+            case "people":
+                PeopleFragment people = new PeopleFragment();
+                args = new Bundle();
+                people.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, people)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case "profile":
+                ProfileFragment profile = new ProfileFragment();
+                args = new Bundle();
+                profile.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, profile)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case "settings":
+                SettingFragment settings = new SettingFragment();
+                args = new Bundle();
+                settings.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, settings)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case "info":
+                AppInfoFragment info;
+                info = new AppInfoFragment();
+                args = new Bundle();
+                info.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, info)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case "profileEdit":
+                EditProfileFragment EP = new EditProfileFragment();
+                args = new Bundle();
+                EP.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, EP)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case "eventSearch":
+                SearchFragment search = new SearchFragment();
+                args = new Bundle();
+                search.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, search)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+
         }
     }
 }
