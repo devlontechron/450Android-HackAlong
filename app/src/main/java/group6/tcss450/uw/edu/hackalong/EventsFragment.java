@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,8 +46,7 @@ public class EventsFragment extends MainPageFragment implements EventsWebService
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_events, container, false);
         mTextView = (TextView) v.findViewById(R.id.EventsText);
-        Button getEventsButton = (Button) v.findViewById(R.id.EventsButton);
-        getEventsButton.setOnClickListener(this);
+        onClick(v);
         return v;
 
     }
@@ -61,7 +59,7 @@ public class EventsFragment extends MainPageFragment implements EventsWebService
     public void onClick(View view){
         EventsWebService task = new EventsWebService(EventsFragment.this);
         task.execute();
-        updateContent(JSONRecieved);
+        //updateContent(JSONRecieved);
     }
 
     /**
@@ -70,7 +68,7 @@ public class EventsFragment extends MainPageFragment implements EventsWebService
      */
     private void updateContent(String JSONRecieved) {
         TextView display = (TextView) getActivity().findViewById(R.id.EventsText);
-        display.setText(JSONRecieved);
+     //   display.setText(JSONRecieved);
     }
 
     /**
