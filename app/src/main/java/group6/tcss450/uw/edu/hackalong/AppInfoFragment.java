@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 /**
  * This class controls the user profile
  */
-public class AppInfoFragment extends MainPageFragment {
+public class AppInfoFragment extends LoginFragment {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
 

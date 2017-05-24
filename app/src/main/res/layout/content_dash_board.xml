@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="group6.tcss450.uw.edu.hackalong.DashBoardActivity"
+    tools:context="group6.tcss450.uw.edu.hackalong.MainActivity"
     tools:showIn="@layout/app_bar_dash_board">
 
 

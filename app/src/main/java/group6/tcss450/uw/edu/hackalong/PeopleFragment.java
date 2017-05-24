@@ -19,7 +19,7 @@ import group6.tcss450.uw.edu.hackalong.tasks.PeopleWebService;
 /**
  * This class is unimplemented, but will display a list of people.
  */
-public class PeopleFragment extends MainPageFragment implements PeopleWebService.OnPeopleTaskCompleteListener {
+public class PeopleFragment extends LoginFragment implements PeopleWebService.OnPeopleTaskCompleteListener {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
     private TextView mTextView;

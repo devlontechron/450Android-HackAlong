@@ -20,10 +20,10 @@ import group6.tcss450.uw.edu.hackalong.tasks.EventsWebService;
 /**
  * This class holds the different events information sent to it by the webservice
  */
-public class EventsFragment extends MainPageFragment implements EventsWebService.OnEventsTaskCompleteListener {
+public class EventsFragment extends LoginFragment implements EventsWebService.OnEventsTaskCompleteListener {
 
     private TextView mTextView;
-    private MainPageFragment.OnFragmentInteractionListener mListener;
+    private LoginFragment.OnFragmentInteractionListener mListener;
     String JSONRecieved;
 
 

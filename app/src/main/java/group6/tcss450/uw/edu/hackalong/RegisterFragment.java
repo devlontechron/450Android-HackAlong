@@ -20,7 +20,7 @@ import group6.tcss450.uw.edu.hackalong.tasks.RegisterWebService;
 /**
  * This class controls the Registration fragment
  */
-public class RegisterFragment extends MainPageFragment implements RegisterWebService.OnRegisterTaskCompleteListener  {
+public class RegisterFragment extends LoginFragment implements RegisterWebService.OnRegisterTaskCompleteListener  {
     /* The fragment listener */
     private OnFragmentInteractionListener mListener;
     /* The email address box */

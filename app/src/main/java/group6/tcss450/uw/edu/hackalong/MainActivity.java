@@ -20,9 +20,9 @@ import android.view.MenuItem;
  * This class is the main fragment manager and main activity. It controlls the fragment switches
  * along with initializing and filling the fragment container
  */
-public class DashBoardActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        MainPageFragment.OnFragmentInteractionListener {
+        LoginFragment.OnFragmentInteractionListener {
 
     /**
      * This method creates the activity, initalizes the toolbar, the floating action button, the
@@ -49,7 +49,7 @@ public class DashBoardActivity extends AppCompatActivity
         if(savedInstanceState == null) {
             if (findViewById(R.id.fragmentContainer) != null) {
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragmentContainer, new MainPageFragment())
+                        .add(R.id.fragmentContainer, new LoginFragment())
                         .commit();
             }
         }
@@ -104,7 +104,7 @@ public class DashBoardActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-         if (id == R.id.nav_manage) {
+         if (id == R.id.nav_Setting) {
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 /**
  * Unimplemented class, will allow searching for people or events
  */
-public class SearchFragment extends MainPageFragment {
+public class SearchFragment extends LoginFragment {
     /* The fragment listener */
     private OnFragmentInteractionListener mListener;
 
