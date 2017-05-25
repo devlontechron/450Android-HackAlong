@@ -24,9 +24,17 @@
     <string name="school">University Of Washingtong Tacoma</string>
     <string name="author">Authors: Clayton Blair, Devin Durham, Thanh Le</string>
     <string name="contact">Contact info: d1durham@uw.edu</string>
-    <string name="setting">Setting</string>
+    <string name="setting">Settings</string>
     <string name="logout">Logout</string>
-    <string name="title_activity_main2">Main2Activity</string>
 
+    <!--pref key values-->
+    <string name ="isLoggedIn">ILI</string>>
+    <string name ="UE">UEmail</string>>
+    <string name ="UN">UName</string>
+    <string name ="UA">UAge</string>
+    <string name ="UL">ULoc</string>
+    <string name ="UB">UBio</string>
+    <string name ="UEv">UEvents</string>
+    <string name ="UT">UTag</string>
 
 </resources>

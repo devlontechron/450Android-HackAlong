@@ -6,6 +6,7 @@
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
@@ -21,6 +22,16 @@ public class ProfileFragment extends LoginFragment {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
     private TextView mTextView;
+
+    TextView userName;
+    TextView userAge;
+    TextView userLoc;
+    TextView userBio;
+    TextView userEvents;
+    TextView userTag;
+    TextView userEmail;
+
+
     /**
      * Required empty constructor
      */
@@ -43,6 +54,30 @@ public class ProfileFragment extends LoginFragment {
 
         FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.fab);
         F.setOnClickListener(this);
+
+        userName = (TextView) v.findViewById(R.id.username);
+        userEmail = (TextView) v.findViewById(R.id.email);
+        userAge = (TextView) v.findViewById(R.id.age);
+        userLoc = (TextView) v.findViewById(R.id.location);
+        userBio = (TextView) v.findViewById(R.id.bio);
+        userEvents = (TextView) v.findViewById(R.id.events);
+        userTag = (TextView) v.findViewById(R.id.interests);
+
+        SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+
+        userEmail.setText(mPref.getString(getString(R.string.UE), null));
+        userName.setText(mPref.getString(getString(R.string.UN), null));
+        String age = mPref.getString(getString(R.string.UA), null);
+        if (age == null){
+            userAge.setText("-1");
+            //do nothing, do not update field if no data is present
+        }else {
+            userAge.setText(age);
+        }
+        userLoc.setText( mPref.getString(getString(R.string.UL), null));
+        userBio.setText(mPref.getString(getString(R.string.UB), null));
+        userEvents.setText(mPref.getString(getString(R.string.UEv), null));
+        userTag.setText(mPref.getString(getString(R.string.UT), null));
         return v;
     }
 

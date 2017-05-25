@@ -6,6 +6,7 @@
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -123,7 +124,19 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
             mObj = new JSONArray(json);
             JSONObject userInfo = mObj.getJSONObject(0);
             String pw = userInfo.getString("UPW");
+
             if(pw.equals(pwd.getText().toString())){
+                SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+              /*
+                mPref.edit().putBoolean(getString(R.string.isLoggedIn),true).apply();
+                mPref.edit().putString(getString(R.string.UE), JSONVAL).apply();
+                mPref.edit().putString(getString(R.string.UN), JSONVAL).apply();
+                mPref.edit().putString(getString(R.string.UL), JSONVAL).apply();
+                mPref.edit().putString(getString(R.string.UA), JSONVAL).apply();
+                mPref.edit().putString(getString(R.string.UEv), JSONVAL).apply();
+                mPref.edit().putString(getString(R.string.UB), JSONVAL).apply();
+                mPref.edit().putString(getString(R.string.UT), JSONVAL).apply();
+*/
                 mListener.onFragmentInteraction("events", email.getText().toString(), pw);
 
             }else{

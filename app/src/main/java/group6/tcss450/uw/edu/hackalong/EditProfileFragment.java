@@ -1,6 +1,7 @@
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import group6.tcss450.uw.edu.hackalong.tasks.EditProfileWebService;
@@ -30,6 +32,7 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
     EditText userBio;
     EditText userEvents;
     EditText userTag;
+    TextView userEmail;
 
     String un;
     int ua;
@@ -38,6 +41,7 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
     String ue;
     String ut;
     String uev;
+
 
 
     public EditProfileFragment() {
@@ -57,6 +61,23 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
         userBio = (EditText) v.findViewById(R.id.editbio);
         userEvents = (EditText) v.findViewById(R.id.editevents);
         userTag = (EditText) v.findViewById(R.id.editinterests);
+        userEmail = (TextView) v.findViewById(R.id.editUEmailText);
+
+        SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+
+        userEmail.setText(mPref.getString(getString(R.string.UE), null));
+        userName.setText(mPref.getString(getString(R.string.UN), null));
+        String age = mPref.getString(getString(R.string.UA), null);
+        if (age == null){
+            //do nothing, do not update field if no data is present
+        }else {
+            userAge.setText(age);
+        }
+        userLoc.setText(mPref.getString(getString(R.string.UL), null));
+        userBio.setText(mPref.getString(getString(R.string.UB), null));
+        userEvents.setText(mPref.getString(getString(R.string.UEv), null));
+        userTag.setText(mPref.getString(getString(R.string.UT), null));
+
 
         return v;
     }
@@ -82,15 +103,27 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
 
     @Override
     public void onClick(View v) {
+        SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         if (mListener != null) {
             un = userName.getText().toString();
-            ua = Integer.parseInt(userAge.getText().toString());
+            mPref.edit().putString(getString(R.string.UN),un).apply();
+            if(userAge.getText().toString().equals("")){
+                ua=0;
+            }else {
+                ua = Integer.parseInt(userAge.getText().toString());
+                mPref.edit().putString(getString(R.string.UA),userAge.getText().toString()).apply();
+            }
+
             ul = userLoc.getText().toString();
+            mPref.edit().putString(getString(R.string.UL),ul).apply();
             ub = userBio.getText().toString();
+            mPref.edit().putString(getString(R.string.UB),ub).apply();
             ut = userTag.getText().toString();
+            mPref.edit().putString(getString(R.string.UT),ut).apply();
             uev = userEvents.getText().toString();
-            //TODO get userEmial from file
-            ue = "dummy";
+            mPref.edit().putString(getString(R.string.UEv),uev).apply();
+            ue = userEmail.getText().toString();
+            mPref.edit().putString(getString(R.string.UE),ue).apply();
             EditProfileWebService task = new EditProfileWebService(EditProfileFragment.this, ue, un, ul, ua, uev, ub, ut);
             task.execute();
             //mListener.onFragmentInteraction("events", username, password);

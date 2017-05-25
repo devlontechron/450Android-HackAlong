@@ -5,6 +5,8 @@
  */
 package group6.tcss450.uw.edu.hackalong;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -24,6 +26,11 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         LoginFragment.OnFragmentInteractionListener {
+
+
+    Boolean loggedIn =false;
+
+
 
     /**
      * This method creates the activity, initalizes the toolbar, the floating action button, the
@@ -47,11 +54,23 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("pref", MODE_PRIVATE);
+
+        loggedIn = pref.getBoolean(getString(R.string.isLoggedIn), false);
+
+
         if(savedInstanceState == null) {
             if (findViewById(R.id.fragmentContainer) != null) {
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragmentContainer, new LoginFragment())
-                        .commit();
+                if(loggedIn) {
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.fragmentContainer, new EventsFragment())
+                            .commit();
+                }else{
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.fragmentContainer, new LoginFragment())
+                            .commit();
+
+                }
             }
         }
     }
@@ -69,39 +88,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /**
-     * This method creates the options menu
-     * @param menu is the options menu to be inflated
-     * @return returns true once the menu is created
-     */
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.dash_board, menu);
-        return false;
-    }
-*/
-    /**
-     * This method controls what happens when a user clicks on an item in the options menu
-     * @param item the item that was clicked on
-     * @return returns true if the item is in the action_settings, calls the super method otherwise
-     */
-   /* @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-*/
-    /**
-     * This method controls what happens when someone selects something in the items menu. It is
-     * not yet implemented.
-     * @param item is the item that was clicked on
-     * @return returns true always since not implemented
-     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -141,6 +127,7 @@ public class MainActivity extends AppCompatActivity
         Bundle args;
         FragmentTransaction transaction;
 
+
         switch(fragment){
             case "events":
                 EventsFragment events;
@@ -178,14 +165,18 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case "profile":
-                ProfileFragment profile = new ProfileFragment();
-                args = new Bundle();
-                profile.setArguments(args);
-                transaction = getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainer, profile)
-                        .addToBackStack(null);
-                transaction.commit();
+                if(loggedIn) {
+                    ProfileFragment profile = new ProfileFragment();
+                    args = new Bundle();
+                    profile.setArguments(args);
+                    transaction = getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainer, profile)
+                            .addToBackStack(null);
+                    transaction.commit();
+                }else{
+                    onFragmentInteraction("login",null,null);
+                }
                 break;
 
             case "settings":
@@ -229,6 +220,17 @@ public class MainActivity extends AppCompatActivity
                 transaction = getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragmentContainer, search)
+                        .addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case "login":
+                LoginFragment login = new LoginFragment();
+                args = new Bundle();
+                login.setArguments(args);
+                transaction = getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, login)
                         .addToBackStack(null);
                 transaction.commit();
                 break;
