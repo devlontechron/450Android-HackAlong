@@ -6,7 +6,9 @@
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,8 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
 
     String password;
     String username;
+
+
 
     public RegisterFragment() {
     }
@@ -128,8 +132,13 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
      */
     private void parseRegJSON(String message) {
         if (message.equals("1")) {
-            mListener.onFragmentInteraction("events", username, password);
+            mListener.onFragmentInteraction("profileEdit", username, password);
+            SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+            mPref.edit().putString(getString(R.string.UE), username).apply();
+            mPref.edit().putBoolean(getString(R.string.isLoggedIn),true).apply();
+
             Toast.makeText( getActivity().getApplicationContext(), "Successful Registration!",Toast.LENGTH_LONG).show();
+
         } else{
             Toast.makeText( getActivity().getApplicationContext(), "That email is already in use",Toast.LENGTH_LONG).show();
         }
