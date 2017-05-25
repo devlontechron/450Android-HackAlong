@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity
 
 
     Boolean loggedIn =false;
+    SharedPreferences pref;
 
 
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("pref", MODE_PRIVATE);
+        pref = getApplicationContext().getSharedPreferences("pref", MODE_PRIVATE);
 
         loggedIn = pref.getBoolean(getString(R.string.isLoggedIn), false);
 
@@ -165,6 +166,8 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case "profile":
+                loggedIn = pref.getBoolean(getString(R.string.isLoggedIn), false);
+
                 if(loggedIn) {
                     ProfileFragment profile = new ProfileFragment();
                     args = new Bundle();

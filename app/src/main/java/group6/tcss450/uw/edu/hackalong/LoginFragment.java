@@ -127,16 +127,29 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
 
             if(pw.equals(pwd.getText().toString())){
                 SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-              /*
                 mPref.edit().putBoolean(getString(R.string.isLoggedIn),true).apply();
-                mPref.edit().putString(getString(R.string.UE), JSONVAL).apply();
-                mPref.edit().putString(getString(R.string.UN), JSONVAL).apply();
-                mPref.edit().putString(getString(R.string.UL), JSONVAL).apply();
-                mPref.edit().putString(getString(R.string.UA), JSONVAL).apply();
-                mPref.edit().putString(getString(R.string.UEv), JSONVAL).apply();
-                mPref.edit().putString(getString(R.string.UB), JSONVAL).apply();
-                mPref.edit().putString(getString(R.string.UT), JSONVAL).apply();
-*/
+
+                mPref.edit().putString(getString(R.string.UE), userInfo.getString("UEmail")).apply();
+
+                if(!userInfo.getString("UName").equals("null")){
+                    mPref.edit().putString(getString(R.string.UN), userInfo.getString("UName")).apply();
+                }
+                if(!userInfo.getString("ULocation").equals("null")){
+                    mPref.edit().putString(getString(R.string.UL), userInfo.getString("ULocation")).apply();
+                }
+                if(!userInfo.getString("UAge").equals("null")){
+                    mPref.edit().putString(getString(R.string.UA), userInfo.getString("UAge")).apply();
+                }
+                if(!userInfo.getString("UEvents").equals("null")){
+                    mPref.edit().putString(getString(R.string.UEv), userInfo.getString("UEvents")).apply();
+                }
+                if(!userInfo.getString("UBio").equals("null")){
+                    mPref.edit().putString(getString(R.string.UB), userInfo.getString("UBio")).apply();
+                }
+                if(!userInfo.getString("UTag").equals("null")){
+                    mPref.edit().putString(getString(R.string.UT), userInfo.getString("UTag")).apply();
+                }
+
                 mListener.onFragmentInteraction("events", email.getText().toString(), pw);
 
             }else{

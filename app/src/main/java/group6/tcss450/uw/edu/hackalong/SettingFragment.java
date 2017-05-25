@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-  
+
 
 /**
  * This class controls the user profile
@@ -53,7 +53,7 @@ public class SettingFragment extends LoginFragment implements View.OnClickListen
         //dialog
 
         SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        mPref.edit().clear();
+        mPref.edit().clear().apply();
         mPref.edit().putBoolean(getString(R.string.isLoggedIn), false).apply();
         if (mListener != null) {
             mListener.onFragmentInteraction("login", null, null);
