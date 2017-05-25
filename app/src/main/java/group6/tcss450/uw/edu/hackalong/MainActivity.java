@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity
                         .addToBackStack(null);
                 transaction.commit();
                 break;
+
             case "people":
                 PeopleFragment people = new PeopleFragment();
                 args = new Bundle();
