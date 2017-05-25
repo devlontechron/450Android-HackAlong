@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+  
 
 /**
  * This class controls the user profile
@@ -27,7 +27,7 @@ public class SettingFragment extends LoginFragment implements View.OnClickListen
      */
     public SettingFragment() {
     }
-  
+
     /**
      * Creates the view for the fragment
      *
