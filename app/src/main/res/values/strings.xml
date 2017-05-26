@@ -26,6 +26,7 @@
     <string name="contact">Contact info: d1durham@uw.edu</string>
     <string name="setting">Settings</string>
     <string name="logout">Logout</string>
+    <string name="show_pass">Show Password</string>
 
     <!--pref key values-->
     <string name ="isLoggedIn">ILI</string>>

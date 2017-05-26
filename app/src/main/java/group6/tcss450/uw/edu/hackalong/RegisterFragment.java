@@ -9,10 +9,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,7 +42,7 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
 
     String password;
     String username;
-
+    CheckBox checkbox;
 
 
     public RegisterFragment() {
@@ -59,7 +64,24 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
         user = (EditText) v.findViewById(R.id.registername);
         pass = (EditText) v.findViewById(R.id.registerpassword);
         pass2 = (EditText) v.findViewById(R.id.reenterpassword);
+        checkbox = (CheckBox) v.findViewById(R.id.checkBox);
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // checkbox status is changed from uncheck to checked.
+                if (!isChecked) {
+                    // show password
+                    pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    pass2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+                } else {
+                    // hide password
+                    pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    pass2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                }
+            }
+        });
         return v;
     }
 
@@ -155,4 +177,5 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
     public void onRegisterTaskError(String error) {
         Toast.makeText( getActivity().getApplicationContext(), "An error with the web service has occured. Try again later.",Toast.LENGTH_LONG).show();
     }
+
 }

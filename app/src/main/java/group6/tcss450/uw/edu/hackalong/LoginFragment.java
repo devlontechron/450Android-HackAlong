@@ -9,10 +9,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,6 +37,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
     EditText email;
     /* the password textbox */
     EditText pwd;
+    CheckBox checkbox;
+
     /**
      * Required empty constructor
      */
@@ -56,6 +62,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
         b.setOnClickListener(this);
         email = (EditText) v.findViewById(R.id.loginemail);
         pwd = (EditText) v.findViewById(R.id.loginpassword);
+        checkbox = (CheckBox) v.findViewById(R.id.checkBox2);
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // checkbox status is changed from uncheck to checked.
+                if (!isChecked) {
+                    // show password
+                    pwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    pwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
         return v;
     }
 
