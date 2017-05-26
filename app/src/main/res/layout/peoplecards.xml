@@ -7,14 +7,13 @@
     android:tag="cards main container">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
+        android:id="@+id/card_people"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:animateLayoutChanges="true"
         android:clickable="true"
-        android:onClick="onClick"
         android:foreground="?android:attr/selectableItemBackground"
         android:visibility="visible"
         card_view:cardBackgroundColor="@color/cardview_light_background"
@@ -22,65 +21,50 @@
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-
             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.20"
+                android:src="@drawable/ic_person_black_24dp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
                 android:layout_weight="2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewName"
+                    android:id="@+id/textViewPName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
-                    android:text="Event Name"
-                    android:textAlignment="center"
+                    android:text="Name"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
-                    android:id="@+id/textViewLoc"
+                    android:id="@+id/textViewPLoc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
 
                     android:paddingBottom="10dp"
-                    android:text="Event Location"
-                    android:textAlignment="center"
+                    android:text="Location"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
 
-            <TextView
-                android:id="@+id/TextViewDate"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center|clip_vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Date"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="18sp" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
