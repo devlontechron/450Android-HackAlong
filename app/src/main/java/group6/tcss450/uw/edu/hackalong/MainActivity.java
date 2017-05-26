@@ -133,6 +133,8 @@ public class MainActivity extends AppCompatActivity
             case "events":
                 EventsFragment events;
                 events = new EventsFragment();
+                NavigationView mNav = (NavigationView) findViewById(R.id.nav_view);
+                mNav.getMenu().getItem(0).setChecked(true);
                 args = new Bundle();
                 args.putSerializable(getString(R.string.username), username);
                 args.putSerializable(getString(R.string.pass), password);
