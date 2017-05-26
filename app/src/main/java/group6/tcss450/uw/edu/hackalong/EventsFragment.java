@@ -22,13 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import group6.tcss450.uw.edu.hackalong.tasks.EventsWebService;
 
@@ -64,7 +59,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.recyclerview, container, false);
+        View v = inflater.inflate(R.layout.recycler_view_events, container, false);
         loadEvents(v);
         mTextView = (TextView) v.findViewById(R.id.EventsText);
         FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABEventSearch);

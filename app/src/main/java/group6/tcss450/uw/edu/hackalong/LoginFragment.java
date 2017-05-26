@@ -152,6 +152,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
 
                 mListener.onFragmentInteraction("events", email.getText().toString(), pw);
 
+
+
             }else{
                 Toast.makeText( getActivity().getApplicationContext(), "The password is incorrect.",Toast.LENGTH_LONG).show();
                 //throw error toast

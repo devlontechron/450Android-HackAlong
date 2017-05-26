@@ -14,4 +14,4 @@
     android:backgroundTint="@color/cardview_dark_background"
 
     app:layoutManager="LinearLayoutManager"
-    tools:listitem="@layout/peoplecards" />
+    tools:listitem="@layout/cards_people" />

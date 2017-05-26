@@ -52,11 +52,10 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.recyclerviewpeople, container, false);
-        mTextView = (TextView) v.findViewById(R.id.people3);
-        FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABPeopleSearch);
+        View v = inflater.inflate(R.layout.recycler_view_people, container, false);
+
+        //FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABPeopleSearch);
         //F.setOnClickListener(this);
-        loadPeopleData(v);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.peoplelist);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         loadPeopleData(v);
@@ -71,13 +70,13 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
     public void onClick(View view){
         if (mListener != null) {
             switch (view.getId()) {
-                case R.id.FABPeopleSearch:
+                /*case R.id.FABPeopleSearch:
                     mListener.onFragmentInteraction("eventSearch", null, null);
                     break;
 
                 default:
                     break;
-
+*/
             }
         }
     }
@@ -120,7 +119,7 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
             }
 
         }catch (JSONException e){
-            Log.e("JSON","events");
+            Log.e("JSON","People");
         }
 
         AdapterPeople mAdapter = new AdapterPeople(mDataset,peopleLocData);

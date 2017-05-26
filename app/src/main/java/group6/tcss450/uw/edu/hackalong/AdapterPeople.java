@@ -41,7 +41,7 @@ public class AdapterPeople extends RecyclerView.Adapter<AdapterPeople.MyViewHold
     public MyViewHolderPeople onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.peoplecards, parent, false);
+                .inflate(R.layout.cards_people, parent, false);
         // set the view's size, margins, paddings and layout parameters
         AdapterPeople.MyViewHolderPeople vh = new AdapterPeople.MyViewHolderPeople(v);
         return vh;
