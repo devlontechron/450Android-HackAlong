@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity
                         .addToBackStack(null);
                 transaction.commit();
                 break;
-            case "register":  
+            case "register":
                 RegisterFragment register;
                 register = new RegisterFragment();
                 args = new Bundle();
@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity
                         .addToBackStack(null);
                 transaction.commit();
                 break;
+
             case "people":
                 PeopleFragment people = new PeopleFragment();
                 args = new Bundle();

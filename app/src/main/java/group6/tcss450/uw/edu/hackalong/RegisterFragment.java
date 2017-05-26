@@ -86,7 +86,10 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
     @Override
     public void onClick(View v) {
         if (mListener != null) {
-            if (user.getText().length() > 0 && pass.getText().length() > 0) {
+            if(!user.getText().toString().contains("@") || !user.getText().toString().contains(".")){
+                Toast.makeText( getActivity().getApplicationContext(), "Not a valid email address",Toast.LENGTH_LONG).show();
+            }
+            else if (user.getText().length() > 0 && pass.getText().length() > 0) {
                 password = pass.getText().toString();
                 username = user.getText().toString().toLowerCase();
                 String password2 = pass2.getText().toString();

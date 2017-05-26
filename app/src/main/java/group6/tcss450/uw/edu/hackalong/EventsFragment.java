@@ -9,6 +9,8 @@ package group6.tcss450.uw.edu.hackalong;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
     String JSONRecieved;
 
 
+    protected RecyclerView mRecyclerView;
 
     /**
      * Required empty constructor
@@ -45,10 +48,14 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_events, container, false);
+        View v = inflater.inflate(R.layout.recyclerview, container, false);
         mTextView = (TextView) v.findViewById(R.id.EventsText);
         FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABEventSearch);
-        F.setOnClickListener(this);
+        //F.setOnClickListener(this);
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.list);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Adapter mAdapter = new Adapter(new String[]{"Test one","Test one","Test one","Test one","Test one","Test one","Test one","Test one","Test one","Test one"});
+        mRecyclerView.setAdapter(mAdapter);
         loadEvents(v);
         return v;
 
@@ -117,7 +124,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
      * @param json
      */
     private void parseJSON(final String json) {
-        mTextView.setText(json);
+       // mTextView.setText(json);
     }
 
     /**
