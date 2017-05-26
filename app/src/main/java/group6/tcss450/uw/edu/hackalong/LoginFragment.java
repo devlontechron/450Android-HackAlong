@@ -64,14 +64,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
         pwd = (EditText) v.findViewById(R.id.loginpassword);
         checkbox = (CheckBox) v.findViewById(R.id.checkBox2);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // checkbox status is changed from uncheck to checked.
                 if (!isChecked) {
-                    // show password
                     pwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 } else {
-                    // hide password
                     pwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
             }

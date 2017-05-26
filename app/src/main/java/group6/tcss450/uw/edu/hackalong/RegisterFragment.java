@@ -66,16 +66,11 @@ public class RegisterFragment extends LoginFragment implements RegisterWebServic
         pass2 = (EditText) v.findViewById(R.id.reenterpassword);
         checkbox = (CheckBox) v.findViewById(R.id.checkBox);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // checkbox status is changed from uncheck to checked.
                 if (!isChecked) {
-                    // show password
                     pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     pass2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
                 } else {
-                    // hide password
                     pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     pass2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
