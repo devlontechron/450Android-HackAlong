@@ -104,6 +104,8 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
 
 
     private void parseJSON(final String json) {
+        mDataset.clear();
+        peopleLocData.clear();
         JSONArray jObject;
         ArrayList<String> myPeopleList = new ArrayList<String>();
 

@@ -131,6 +131,9 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
      * @param json
      */
     private void parseJSON(final String json) throws JSONException, ParseException {
+        mDataset.clear();
+        eventDateData.clear();
+        eventDateData.clear();
         JSONArray jObject;
         ArrayList<String> myEventList = new ArrayList<String>();
 
