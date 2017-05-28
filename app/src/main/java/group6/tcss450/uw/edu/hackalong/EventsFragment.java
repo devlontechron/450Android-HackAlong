@@ -22,8 +22,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import group6.tcss450.uw.edu.hackalong.tasks.EventsWebService;
 
@@ -135,31 +139,11 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
         mDataset.clear();
         eventDateData.clear();
         eventDateData.clear();
+        eventID.clear();
         JSONArray jObject = new JSONArray();
-        ArrayList<String> myEventList = new ArrayList<String>();
+        ArrayList<Date>  myEventList = new ArrayList<Date>();
 
 
-        try {
-            jObject = new JSONArray(json);
-            for (int i = 0; i < jObject.length(); i++) {
-                JSONObject event = jObject.getJSONObject(i);
-
-                    mDataset.add(event.getString("EName"));
-                    eventLocData.add(event.getString("ELocation"));
-                    eventID.add(event.getString("EID"));
-
-                    eventDateData.add(event.getString("EDate"));
-                }
-
-        }catch (JSONException e){
-            Log.e("JSON","events");
-        }
-
-        Adapter mAdapter = new Adapter(mDataset,eventLocData,eventDateData, eventID, jObject);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    /*This should sort the list but had an addapter error
         try {
             jObject = new JSONArray(json);
             for (int i = 0; i < jObject.length(); i++) {
@@ -171,35 +155,49 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
                 Date currDay = new Date();
 
                 if (eventDateDate.before(currDay)) {
-                    i++;
-                } else {
-                    for (int j = 0; jsonIndex.size() > j; j++) {
-                        Date myListDate = format.parse(myEventDateArray.get(j));
-                        if (eventDateDate.before(myListDate)) {
-                            myEventDateArray.add(j, event.getString("EDate"));
-                            jsonIndex.add(j, i);
-                        } else {
-                            j++;
-                        }
+                } else if(myEventList.size()==0) {
+                    myEventList.add(eventDateDate);
+                    mDataset.add(event.getString("EName"));
+                    eventLocData.add(event.getString("ELocation"));
+                    eventID.add(event.getString("EID"));
+                    eventDateData.add(event.getString("EDate"));
+                }else{
+                    int hasBennAdded =0;
+                    int j=  0;
+                    while(hasBennAdded==0) {
 
+                        if(j==myEventList.size() ){
+                            myEventList.add(j,eventDateDate);
+                            mDataset.add(j,event.getString("EName"));
+                            eventLocData.add(j,event.getString("ELocation"));
+                            eventID.add(j,event.getString("EID"));
+                            eventDateData.add(j,event.getString("EDate"));
+                            hasBennAdded=1;
+
+                        }else if(eventDateDate.after(myEventList.get(j))){
+                            j++;
+
+                        }else{
+
+                            myEventList.add(j,eventDateDate);
+                            mDataset.add(j,event.getString("EName"));
+                            eventLocData.add(j,event.getString("ELocation"));
+                            eventID.add(j,event.getString("EID"));
+                            eventDateData.add(j,event.getString("EDate"));
+                            hasBennAdded=1;
+                        }
                     }
+
                 }
             }
-            for(int x = 0; jsonIndex.size()<x; x++){
-                JSONObject sortedEvent = jObject.getJSONObject(jsonIndex.indexOf(x));
-
-                    mDataset.add(sortedEvent.getString("EName"));
-                    eventLocData.add(sortedEvent.getString("ELocation"));
-                    eventDateData.add(sortedEvent.toString());
-                }
 
         }catch (JSONException e){
             Log.e("JSON","events");
         }
-*/
 
-
-
+        Adapter mAdapter = new Adapter(mDataset,eventLocData,eventDateData, eventID, jObject);
+        mRecyclerView.setAdapter(mAdapter);
+    }
 
     /**
      * return from a successful Async task of EventsWebService

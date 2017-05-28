@@ -83,7 +83,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                 Bundle args;
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Fragment myFragment = new SingleEventFragment();
-
+String help = eventIDData.get((int) v.getTag());
                 args = new Bundle();
                 args.putString("EID",eventIDData.get((int) v.getTag()));
                 args.putString("JSON",  myJSON.toString());

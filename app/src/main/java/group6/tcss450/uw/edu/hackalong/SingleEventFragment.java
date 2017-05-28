@@ -95,6 +95,7 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
         TextView mDiscTV = (TextView) v.findViewById(R.id.profileBio);
         TextView mTagTV = (TextView) v.findViewById(R.id.profileEvents);
         TextView mLinkTV = (TextView) v.findViewById(R.id.eventLink);
+        TextView mDateTV = (TextView) v.findViewById(R.id.SEdate);
         mNameTV.setText(EN);
         mIDTV.setText(EID);
         mLocTV.setText(ELoc);
@@ -102,6 +103,7 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
         mTagTV.setText(ET);
         mLinkTV.setText(ELink);
         mHostTV.setText(EH);
+        mDateTV.setText(ED);
         return v;
     }
 

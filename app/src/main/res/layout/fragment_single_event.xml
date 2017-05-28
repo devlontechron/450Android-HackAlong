@@ -85,6 +85,28 @@
                 app:layout_constraintRight_toRightOf="parent" />
 
             <TextView
+                android:id="@+id/eventDateLable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Date:"
+
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
+
+            <TextView
+                android:id="@+id/SEdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/eventLoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,11 +126,8 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/eventLoc"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toRightOf="@+id/eventLoc"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textSize="18sp"/>.
+
 
             <TextView
                 android:id="@+id/lableLoc"
@@ -119,9 +138,8 @@
                 android:text="Description:"
 
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profileLoc" />
+                android:textSize="18sp"/>
+
 
             <TextView
                 android:id="@+id/profileBio"
@@ -130,11 +148,8 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/lableLoc"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@+id/lableLoc"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textSize="18sp"/>
+
 
             <TextView
                 android:id="@+id/lableEvents"
@@ -156,11 +171,7 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/lableEvents"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@+id/lableEvents"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/lableBio"
