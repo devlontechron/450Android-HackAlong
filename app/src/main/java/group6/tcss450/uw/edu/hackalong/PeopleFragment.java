@@ -36,6 +36,7 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
     protected RecyclerView mRecyclerView;
     ArrayList<String> mDataset = new ArrayList<String>();
     ArrayList<String> peopleLocData = new ArrayList<String>();
+    ArrayList<String> peopleEmail = new ArrayList<String>();
     /**
      * Required empty constructor
      */
@@ -106,7 +107,8 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
     private void parseJSON(final String json) {
         mDataset.clear();
         peopleLocData.clear();
-        JSONArray jObject;
+        peopleEmail.clear();
+        JSONArray jObject = new JSONArray();
         ArrayList<String> myPeopleList = new ArrayList<String>();
 
 
@@ -117,6 +119,7 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
 
                 mDataset.add(event.getString("UName"));
                 peopleLocData.add(event.getString("ULocation"));
+                peopleEmail.add(event.getString("UEmail"));
 
             }
 
@@ -124,7 +127,7 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
             Log.e("JSON","People");
         }
 
-        AdapterPeople mAdapter = new AdapterPeople(mDataset,peopleLocData);
+        AdapterPeople mAdapter = new AdapterPeople(mDataset,peopleLocData,peopleEmail, jObject);
         mRecyclerView.setAdapter(mAdapter);
     }
 

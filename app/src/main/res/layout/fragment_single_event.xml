@@ -21,7 +21,7 @@
 
 
             <TextView
-                android:id="@+id/eventTVName"
+                android:id="@+id/profileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -39,7 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/eventTVID"
+                android:id="@+id/profileEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -52,7 +52,7 @@
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventTVName" />
+                app:layout_constraintTop_toBottomOf="@+id/profileName" />
 
 
             <TextView
@@ -66,16 +66,15 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventTVID" />
+                app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
 
             <TextView
-                android:id="@+id/eventHostTV"
+                android:id="@+id/profileAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
                 android:gravity="start"
-                android:text="null"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent"
@@ -96,15 +95,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventHostTV" />
+                app:layout_constraintTop_toBottomOf="@+id/profileAge" />
 
             <TextView
-                android:id="@+id/eventLocTV"
+                android:id="@+id/profileLoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
-                android:text="null"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/eventLoc"
@@ -123,15 +121,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventLocTV" />
+                app:layout_constraintTop_toBottomOf="@+id/profileLoc" />
 
             <TextView
-                android:id="@+id/eventDiscTV"
+                android:id="@+id/profileBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
-                android:text="null"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/lableLoc"
@@ -150,15 +147,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventDiscTV" />
+                app:layout_constraintTop_toBottomOf="@+id/profileBio" />
 
             <TextView
-                android:id="@+id/eventTag"
+                android:id="@+id/profileEvents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
-                android:text="null"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/lableEvents"
@@ -178,7 +174,7 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventTag"
+                app:layout_constraintTop_toBottomOf="@+id/profileEvents"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -188,7 +184,6 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="20dp"
                 android:autoLink="web"
-                android:text="null"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/lableBio"

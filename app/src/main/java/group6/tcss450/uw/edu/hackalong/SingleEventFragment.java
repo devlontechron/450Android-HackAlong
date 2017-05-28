@@ -1,7 +1,6 @@
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -89,12 +88,12 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_single_event, container, false);
-        TextView mNameTV= (TextView) v.findViewById(R.id.eventTVName);
-        TextView mIDTV = (TextView) v.findViewById(R.id.eventTVID);
-        TextView mHostTV = (TextView) v.findViewById(R.id.eventHostTV);
-        TextView mLocTV = (TextView) v.findViewById(R.id.eventLocTV);
-        TextView mDiscTV = (TextView) v.findViewById(R.id.eventDiscTV);
-        TextView mTagTV = (TextView) v.findViewById(R.id.eventTag);
+        TextView mNameTV= (TextView) v.findViewById(R.id.profileName);
+        TextView mIDTV = (TextView) v.findViewById(R.id.profileEmail);
+        TextView mHostTV = (TextView) v.findViewById(R.id.profileAge);
+        TextView mLocTV = (TextView) v.findViewById(R.id.profileLoc);
+        TextView mDiscTV = (TextView) v.findViewById(R.id.profileBio);
+        TextView mTagTV = (TextView) v.findViewById(R.id.profileEvents);
         TextView mLinkTV = (TextView) v.findViewById(R.id.eventLink);
         mNameTV.setText(EN);
         mIDTV.setText(EID);

@@ -20,7 +20,7 @@
 
 
         <TextView
-            android:id="@+id/eventTVName"
+            android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -36,29 +36,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/eventTVID"
+            android:id="@+id/profileEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="null"
+            android:layout_marginTop="12dp"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventTVName" />
+            app:layout_constraintTop_toBottomOf="@+id/profileName" />
 
 
         <TextView
-            android:id="@+id/eventHostTV"
+            android:id="@+id/profileAge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="32dp"
             android:gravity="start"
-            android:text="null"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="@color/colorAccent"
@@ -66,72 +66,67 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/eventHos"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/eventHos"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/eventLocTV"
+            android:id="@+id/profileLoc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="8dp"
-            android:text="null"
+            android:layout_marginStart="32dp"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/eventLoc"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/eventLoc"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/eventDiscTV"
+            android:id="@+id/profileBio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="8dp"
-            android:text="null"
+            android:layout_marginStart="32dp"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/lableLoc"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/lableLoc"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/eventTag"
+            android:id="@+id/profileEvents"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="8dp"
-            android:text="null"
+            android:layout_marginStart="32dp"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/lableEvents"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toRightOf="@+id/lableEvents"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/interests"
+            android:id="@+id/profileIntrests"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="32dp"
-            android:text="null"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="32dp"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/lableBio"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/lableBio"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintRight_toRightOf="parent" />
 
 
         <android.support.design.widget.FloatingActionButton
@@ -163,7 +158,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventTVID"
+            app:layout_constraintTop_toBottomOf="@+id/profileEmail"
             android:layout_marginStart="16dp" />
 
         <TextView
@@ -176,7 +171,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventLocTV"
+            app:layout_constraintTop_toBottomOf="@+id/profileLoc"
             android:layout_marginStart="16dp" />
 
         <TextView
@@ -187,7 +182,7 @@
             android:text="Intrests: "
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/eventTag"
+            app:layout_constraintTop_toBottomOf="@+id/profileEvents"
             android:layout_marginLeft="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="16dp" />
@@ -202,7 +197,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventDiscTV"
+            app:layout_constraintTop_toBottomOf="@+id/profileBio"
             android:layout_marginStart="16dp" />
 
         <TextView
@@ -215,7 +210,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventHostTV"
+            app:layout_constraintTop_toBottomOf="@+id/profileAge"
             android:layout_marginStart="16dp" />
 
         <Space
@@ -224,7 +219,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/interests" />
+            app:layout_constraintTop_toBottomOf="@+id/profileIntrests" />
 
 
     </android.support.constraint.ConstraintLayout>
