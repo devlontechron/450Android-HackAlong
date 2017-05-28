@@ -38,6 +38,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
     ArrayList<String> mDataset = new ArrayList<String>();
     ArrayList<String> eventLocData = new ArrayList<String>();
     ArrayList<String> eventDateData = new ArrayList<String>();
+    ArrayList<String> eventID = new ArrayList<String>();
 
 
 
@@ -62,7 +63,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
         View v = inflater.inflate(R.layout.recycler_view_events, container, false);
         loadEvents(v);
         mTextView = (TextView) v.findViewById(R.id.EventsText);
-        FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABEventSearch);
+     //  FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABEventSearch);
         //F.setOnClickListener(this);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -134,7 +135,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
         mDataset.clear();
         eventDateData.clear();
         eventDateData.clear();
-        JSONArray jObject;
+        JSONArray jObject = new JSONArray();
         ArrayList<String> myEventList = new ArrayList<String>();
 
 
@@ -145,6 +146,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
 
                     mDataset.add(event.getString("EName"));
                     eventLocData.add(event.getString("ELocation"));
+                    eventID.add(event.getString("EID"));
 
                     eventDateData.add(event.getString("EDate"));
                 }
@@ -153,7 +155,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
             Log.e("JSON","events");
         }
 
-        Adapter mAdapter = new Adapter(mDataset,eventLocData,eventDateData);
+        Adapter mAdapter = new Adapter(mDataset,eventLocData,eventDateData, eventID, jObject);
         mRecyclerView.setAdapter(mAdapter);
     }
 

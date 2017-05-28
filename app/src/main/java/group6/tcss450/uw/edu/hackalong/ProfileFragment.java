@@ -50,17 +50,17 @@ public class ProfileFragment extends LoginFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
-        mTextView = (TextView) v.findViewById(R.id.username);
+        mTextView = (TextView) v.findViewById(R.id.eventTVName);
 
         FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.fab);
         F.setOnClickListener(this);
 
-        userName = (TextView) v.findViewById(R.id.username);
-        userEmail = (TextView) v.findViewById(R.id.email);
-        userAge = (TextView) v.findViewById(R.id.age);
-        userLoc = (TextView) v.findViewById(R.id.location);
-        userBio = (TextView) v.findViewById(R.id.bio);
-        userEvents = (TextView) v.findViewById(R.id.events);
+        userName = (TextView) v.findViewById(R.id.eventTVName);
+        userEmail = (TextView) v.findViewById(R.id.eventTVID);
+        userAge = (TextView) v.findViewById(R.id.eventHostTV);
+        userLoc = (TextView) v.findViewById(R.id.eventLocTV);
+        userBio = (TextView) v.findViewById(R.id.eventDiscTV);
+        userEvents = (TextView) v.findViewById(R.id.eventTag);
         userTag = (TextView) v.findViewById(R.id.interests);
 
         SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);

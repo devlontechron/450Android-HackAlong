@@ -29,13 +29,13 @@
     <string name="show_pass">Show Password</string>
 
     <!--pref key values-->
-    <string name ="isLoggedIn">ILI</string>>
-    <string name ="UE">UEmail</string>>
-    <string name ="UN">UName</string>
-    <string name ="UA">UAge</string>
-    <string name ="UL">ULoc</string>
-    <string name ="UB">UBio</string>
-    <string name ="UEv">UEvents</string>
-    <string name ="UT">UTag</string>
+    <string name="isLoggedIn">ILI</string>>
+    <string name="UE">UEmail</string>>
+    <string name="UN">UName</string>
+    <string name="UA">UAge</string>
+    <string name="UL">ULoc</string>
+    <string name="UB">UBio</string>
+    <string name="UEv">UEvents</string>
+    <string name="UT">UTag</string>
 
 </resources>

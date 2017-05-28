@@ -38,7 +38,7 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... none) {
         String response = "";
-    HttpURLConnection urlConnection = null;
+        HttpURLConnection urlConnection = null;
         try {
         URL urlObject = new URL("http://cssgate.insttech.washington.edu/~d1durham/getAllEvents.php");
         urlConnection = (HttpURLConnection) urlObject.openConnection();
