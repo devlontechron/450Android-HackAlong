@@ -18,6 +18,10 @@ Suggestions from Phase 1:
 Missing Features
   The Search feature for events or people
   The intrests tags for events and users.
+
+Known Issues
+  OnBackPress the navigation drawer  has incorrect selecttion
+  The update profile sometimes throws a toast notification error but still saves data (only happened twice)  
  
 Saving Data
   Data persisted through the use of the CSS database and the SharedPreferences file.
