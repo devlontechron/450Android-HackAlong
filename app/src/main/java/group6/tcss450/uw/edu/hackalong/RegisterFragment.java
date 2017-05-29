@@ -25,7 +25,7 @@ import group6.tcss450.uw.edu.hackalong.tasks.RegisterWebService;
 
 
 /**
- * This class controls the Registration fragment
+ * This class controls the Registration fragment for users to create and edit their accounts
  */
 public class RegisterFragment extends LoginFragment implements RegisterWebService.OnRegisterTaskCompleteListener  {
     /* The fragment listener */

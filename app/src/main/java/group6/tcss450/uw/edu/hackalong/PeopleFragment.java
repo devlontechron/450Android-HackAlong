@@ -27,16 +27,17 @@ import group6.tcss450.uw.edu.hackalong.tasks.PeopleWebService;
 
 
 /**
- * This class is unimplemented, but will display a list of people.
+ * Displays a list of people (all users) with names and locations to click and open profiles.
  */
 public class PeopleFragment extends LoginFragment implements PeopleWebService.OnPeopleTaskCompleteListener {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
-    private TextView mTextView;
     protected RecyclerView mRecyclerView;
     ArrayList<String> mDataset = new ArrayList<String>();
     ArrayList<String> peopleLocData = new ArrayList<String>();
     ArrayList<String> peopleEmail = new ArrayList<String>();
+
+
     /**
      * Required empty constructor
      */
@@ -55,18 +56,22 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.recycler_view_people, container, false);
 
+        //commented out for future implementation of search
         //FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABPeopleSearch);
         //F.setOnClickListener(this);
+
         mRecyclerView = (RecyclerView) v.findViewById(R.id.peoplelist);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //Call to start Async task to get people
         loadPeopleData(v);
-        //Adapter mAdapter = new Adapter(eventName,eventLoc,eventDate);
-       // mRecyclerView.setAdapter(mAdapter);
         return v;
 
     }
 
-
+    /**
+     * used for Search button implementation
+     * @param view
+     */
     @Override
     public void onClick(View view){
         if (mListener != null) {
@@ -82,6 +87,10 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
         }
     }
 
+    /**
+     * creates and begins AsyncTask of PeopleWebService
+     * @param v
+     */
     public void loadPeopleData(View v){
         PeopleWebService task = new PeopleWebService(PeopleFragment.this);
         task.execute();
@@ -103,7 +112,12 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
     }
 
 
-
+    /**
+     * Parses the returned JSON form peopleWebService
+     * loads the 3 ArrayLists with datta
+     * sends to AdapterPeople
+     * @param json
+     */
     private void parseJSON(final String json) {
         mDataset.clear();
         peopleLocData.clear();
@@ -141,12 +155,20 @@ public class PeopleFragment extends LoginFragment implements PeopleWebService.On
         mListener = null;
     }
 
+    /**
+     * if the AsyncTask peopleWebServices returns completed
+     * @param message
+     */
     @Override
     public void onPeopleTaskCompletion(String message) {
         parseJSON(message);
 
     }
 
+    /**
+     * if the AsyncTask peopleWebServices returns with an error
+     * @param error
+     */
     @Override
     public void onPeopleTaskError(String error) {
         Toast.makeText( getActivity().getApplicationContext(), "An error occured while getting the EventsFragment. Try again Later",Toast.LENGTH_LONG).show();

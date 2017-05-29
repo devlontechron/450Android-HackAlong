@@ -1,3 +1,10 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * SingleEventFragment.java
+ * May 28, 2017
+ */
+
+
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
@@ -16,16 +23,13 @@ import org.json.JSONException;
  * Activities that contain this fragment must implement the
  * {@link SingleEventFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SingleEventFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
-public class SingleEventFragment extends LoginFragment implements LoginFragment.OnFragmentInteractionListener {
+public class SingleEventFragment extends LoginFragment  {
 
     private OnFragmentInteractionListener mListener;
     JSONArray myJA;
     String myJAString;
     String evID;
-    int requestedID = 0;
     String EN;
     String EID;
     String ELink;
@@ -36,20 +40,18 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
     String EDis;
 
 
-
+//constructor required
     public SingleEventFragment() {
 
     }
 
-
-    // TODO: Rename and change types and number of parameters
-    public static SingleEventFragment newInstance(String param1, String param2) {
-        SingleEventFragment fragment = new SingleEventFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+/**
+*onCreate methode used to get arguments passed to fragments.
+* arguements from Adapter.java pass the event ID and the whole JSON string
+* sets String values from JSONArray object
+* @param savedInstanceState
+* @return View
+ **/
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,7 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
                 myJA = new JSONArray(myJAString);
                 int t=0;
 
+                //checks for event ID then stores corrosponding calues from JSON
                 while(myJA.length()>t &&EID==null){
                     if(myJA.getJSONObject(t).getString("EID").equals(evID)){
                         EID = myJA.getJSONObject(t).get("EID").toString();
@@ -84,6 +87,16 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
 
     }
 
+    /**
+    *onCreateView creates the view of the fragment
+    * called by system
+    * retirieves TextViews from XML fragment_single_event.xml
+    * sets textViews to recieved JSON string in onCreate
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return View
+     **/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -108,7 +121,11 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
     }
 
 
-
+    /**
+     * Checks the context to make sure it is an OnFragmentInteractionListener
+     *
+     * @param context is the context of this class
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -120,15 +137,13 @@ public class SingleEventFragment extends LoginFragment implements LoginFragment.
         }
     }
 
+    /**
+     * Calls the super method and sets the mListener to null
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-
-    @Override
-    public void onFragmentInteraction(String fragment, String username, String password) {
-
-    }
 }

@@ -15,6 +15,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+/**
+ * AsyncTask web service to register new users and update the database
+ */
 public class RegisterWebService extends AsyncTask<Void, Void, String> {
 
 

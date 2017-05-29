@@ -14,7 +14,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
+/**
+ * Async task called from EventsFragment to reach and GET all events
+ */
 public class EventsWebService extends AsyncTask<Void, Void, String> {
 
 
@@ -62,7 +64,7 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
         return response;
 }
     /**
-     * checks if connection was successful and calls methods
+     * checks if connection was successful or responded with an error
      * @param result
      */
     @Override
@@ -76,7 +78,7 @@ public class EventsWebService extends AsyncTask<Void, Void, String> {
 
     }
     /**
-     * methods for other methods
+     * methods for other methods to call after compleation of task
      */
     public interface OnEventsTaskCompleteListener {
         void onEventsTaskCompletion(String message);

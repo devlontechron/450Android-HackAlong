@@ -46,7 +46,12 @@ public class SettingFragment extends LoginFragment implements View.OnClickListen
         return v;
     }
 
-
+/**
+ * onClick for "logout" button
+ * erases shared prefs file
+ * @param v
+ *
+ **/
 
     public void onClick(View v){
         if(mListener!=null){

@@ -1,3 +1,10 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * EditProfileWebSErvice.java
+ * May 28, 2017
+ */
+
+
 package group6.tcss450.uw.edu.hackalong.tasks;
 
 import android.os.AsyncTask;
@@ -8,12 +15,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 /**
- * Created by Devin Durham on 5/23/2017.
+ * Async task to save and UPDATE user information in database
+ * called from editUserProfile
  */
-
-
-
 public class EditProfileWebService extends AsyncTask<Void, Void, String>{
 
     private OnEditTaskCompleteListener mListener;
@@ -25,7 +31,17 @@ public class EditProfileWebService extends AsyncTask<Void, Void, String>{
     private String userB = "";
     private String userEv = "";
 
-
+    /**
+     * recieves user input and stores to variable
+     * @param listner
+     * @param userEmail
+     * @param Uname
+     * @param ULoc
+     * @param UAge
+     * @param UEv
+     * @param UB
+     * @param UT
+     */
     public EditProfileWebService(final OnEditTaskCompleteListener listner, String userEmail, String Uname, String ULoc, int UAge, String UEv, String UB, String UT) {
         super();
         mListener = listner;
@@ -39,6 +55,11 @@ public class EditProfileWebService extends AsyncTask<Void, Void, String>{
 
     }
 
+    /**
+     * connects to web service and puts recieved user input into database
+     * @param params
+     * @return
+     */
     @Override 
     protected String doInBackground(Void... params) {
         String response = "";
@@ -66,7 +87,10 @@ public class EditProfileWebService extends AsyncTask<Void, Void, String>{
         return response;
     }
 
-
+    /**
+     * checks the response from the web service after task has completed
+     * @param result
+     */
     @Override
     protected void onPostExecute(String result) {
         if (result.startsWith("Unable to")) {
@@ -78,7 +102,9 @@ public class EditProfileWebService extends AsyncTask<Void, Void, String>{
 
     }
 
-
+    /**
+     * Listener for task completion
+     */
     public interface OnEditTaskCompleteListener {
         void onEditTaskCompletion(String message);
         void onEditTaskError(String error);

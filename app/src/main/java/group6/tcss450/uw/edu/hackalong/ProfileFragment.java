@@ -19,12 +19,11 @@ import org.json.JSONException;
 
 
 /**
- * This class controls the user profile
+ * This class controls the user profile AND the profiles for all users after clicking on one in peopleFragment
  */
 public class ProfileFragment extends LoginFragment {
     /* the fragment listener */
     private OnFragmentInteractionListener mListener;
-    private TextView mTextView;
     JSONArray myJA;
     String myJAString;
     TextView userName;
@@ -35,20 +34,15 @@ public class ProfileFragment extends LoginFragment {
     TextView userTag;
     TextView userEmail;
     String userE;
-    String UIE;
     String uname;
-    String uemail;
     String uage;
     String uloc;
     String ubio;
     String uevents;
     String utag;
 
+    //this is used to check if coming from the people fragment or to load the users profile
     int fromPeople = 0;
-
-
-
-
 
     /**
      * Required empty constructor
@@ -56,8 +50,10 @@ public class ProfileFragment extends LoginFragment {
     public ProfileFragment() {
     }
 
-
-
+    /**
+     * retrievs JSON array if present and parses to find selected profile card and store the values
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +61,7 @@ public class ProfileFragment extends LoginFragment {
         if (getArguments() != null) {
             userE = getArguments().getString("UE");
             myJAString = getArguments().getString("JSON");
+            //this looks to see if any JSON is present. if ture, then we are coming form the PeopleFragment. if false, load the user profile
             if (myJAString != null) {
                 fromPeople = 1;
                 try {
@@ -108,8 +105,6 @@ public class ProfileFragment extends LoginFragment {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
 
-            mTextView = (TextView) v.findViewById(R.id.profileName);
-
             FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.fab);
             F.setOnClickListener(this);
 
@@ -123,7 +118,7 @@ public class ProfileFragment extends LoginFragment {
 
         if (fromPeople == 0) {
             SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-
+            //pulls user profile data from shared prefs
             userEmail.setText(mPref.getString(getString(R.string.UE), null));
             userName.setText(mPref.getString(getString(R.string.UN), null));
             String age = mPref.getString(getString(R.string.UA), null);
@@ -139,6 +134,7 @@ public class ProfileFragment extends LoginFragment {
             userTag.setText(mPref.getString(getString(R.string.UT), null));
 
         } else {
+            //pulls data from passed in JSON form AdapterPeople
             userName.setText(uname);
             userLoc.setText(uloc);
             userAge.setText(uage);
@@ -153,6 +149,10 @@ public class ProfileFragment extends LoginFragment {
         return v;
     }
 
+    /**
+     * if the user profile FAB is present, click leads to editProfileFragment
+     * @param v is the view for this fragment
+     */
     public void onClick(View v){
         if (mListener != null) {
             switch (v.getId()) {

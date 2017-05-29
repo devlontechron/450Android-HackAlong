@@ -1,3 +1,10 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * PeopleWebService.java
+ * May 28, 2017
+ */
+
+
 package group6.tcss450.uw.edu.hackalong.tasks;
 
 
@@ -9,6 +16,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * AsyncTask to GET all people profiles from database to be used in peopleFragment
+ */
 public class PeopleWebService extends AsyncTask<Void, Void, String> {
 
     private OnPeopleTaskCompleteListener mListener;
@@ -19,7 +29,13 @@ public class PeopleWebService extends AsyncTask<Void, Void, String> {
     }
 
 
-
+    /**
+     * Task to be done in backgrond thread
+     * connects to service
+     * reads response and returns
+     * @param none
+     * @return response
+     */
     @Override
     protected String doInBackground(Void... none) {
         String response = "";
@@ -47,7 +63,11 @@ public class PeopleWebService extends AsyncTask<Void, Void, String> {
         return response;
     }
 
-
+    /**
+     * task to be carried out after ocmpletion of doInBackground
+     * sends a completion or error back to PeopleFragment
+     * @param result
+     */
     @Override
     protected void onPostExecute(String result) {
         if (result.startsWith("Unable to")) {
@@ -60,7 +80,9 @@ public class PeopleWebService extends AsyncTask<Void, Void, String> {
     }
 
 
-
+    /**
+     * calls methods for compleation of task
+     */
     public interface OnPeopleTaskCompleteListener {
         void onPeopleTaskCompletion(String message);
         void onPeopleTaskError(String error);

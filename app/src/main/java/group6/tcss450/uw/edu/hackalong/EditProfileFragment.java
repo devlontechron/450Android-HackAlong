@@ -1,3 +1,10 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * EditProfileFragment.java
+ * May 28, 2017
+ */
+
+
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
@@ -43,12 +50,20 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
     String uev;
 
 
-
+    /**
+     * required constructor
+     */
     public EditProfileFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * creates layout of editProfileFragment and populates textFields with pre existing values
+     * @param inflater           inflates the fragment
+     * @param container          the container that holds the fragment
+     * @param savedInstanceState the previous state, if any
+     * @return View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,11 +93,13 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
         userEvents.setText(mPref.getString(getString(R.string.UEv), null));
         userTag.setText(mPref.getString(getString(R.string.UT), null));
 
-
         return v;
     }
 
-
+    /**
+     *
+     * @param context is the context of this class
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -94,13 +111,21 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-
+    /**
+     * onClick listener for the save button to send values to database and be saved to sharedPrefs
+     * users must have the name field populated
+     * Calls AsyncTask editProfileWebSercives
+     * @param v is the view for this fragment
+     */
     @Override
     public void onClick(View v) {
         SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
@@ -140,6 +165,10 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
     }
 
 
+    /**
+     * parses the JSON response from AsyncTask editProfileWebSercives to see if successful
+     * @param message
+     */
     private void parseRegJSON(String message) {
         if (message.equals("1")) {
             mListener.onFragmentInteraction("profile", null, null);
@@ -149,13 +178,20 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
         }
     }
 
-
+    /**
+     * AsyncTask editProfileWebSercives completion repsonse
+     * @param message
+     */
     @Override
     public void onEditTaskCompletion(String message) {
         parseRegJSON(message);
 
     }
 
+    /**
+     * AsyncTask editProfileWebSercives error repsonse
+     * @param error
+     */
     @Override
     public void onEditTaskError(String error) {
         Toast.makeText(getActivity().getApplicationContext(), "An error with the web service has occured. Try again later.", Toast.LENGTH_LONG).show();

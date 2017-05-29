@@ -1,3 +1,9 @@
+/**
+ * TCSS 450 Spring 2017 Group 6
+ * Adapter.java
+ * May 28, 2017
+ */
+
 package group6.tcss450.uw.edu.hackalong;
 
 import android.content.Context;
@@ -15,10 +21,11 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import java.util.ArrayList;
 
-/**
- * Created by Devin on 5/25/2017.
- */
 
+/**
+ * @author Devin
+ * Adapter class to handle making the cards and their data for the eventsFrgament
+ */
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     ArrayList<String> mDataset = new ArrayList<String>();
     ArrayList<String> eventLocData = new ArrayList<String>();
@@ -28,9 +35,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     JSONArray myJSON;
 
 
-
-
-
+    /**
+     * Inner class MYViewHolder
+     * handles finding and creating the variable for the cards fields
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView mCardView;
         public TextView mTextViewEvName;
@@ -49,6 +57,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         }
     }
 
+    /**
+     * recieves data from EventsFragment after JSON asyncTask EventsWebService
+     * @param myDataset
+     * @param eventLocDataa
+     * @param eventDateDataa
+     * @param eventIDDataa
+     * @param JSON
+     */
     public Adapter(ArrayList<String> myDataset, ArrayList<String>  eventLocDataa, ArrayList<String>  eventDateDataa, ArrayList<String>  eventIDDataa, JSONArray JSON) {
         mDataset = myDataset;
         eventLocData = eventLocDataa;
@@ -58,7 +74,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         myJSON = JSON;
     }
 
-
+    /**
+     * creates the vies for the cards into the recycler view
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
@@ -69,9 +90,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return vh;
     }
 
+    /**
+     * Creates each card bassed off of the recieved dat inside mDataset and 2 others
+     * Sets a click listener to each card which keeps track of location of information in the
+     * arrayLists and sends to ProfileFragments
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(Adapter.MyViewHolder holder, final int position) {
-
         holder.mTextViewEvName.setText(mDataset.get(position));
         holder.mTextViewEvLoc.setText(eventLocData.get(position));
         holder.mTextViewEvDate.setText(eventDateData.get(position));
@@ -83,7 +110,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                 Bundle args;
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Fragment myFragment = new SingleEventFragment();
-String help = eventIDData.get((int) v.getTag());
                 args = new Bundle();
                 args.putString("EID",eventIDData.get((int) v.getTag()));
                 args.putString("JSON",  myJSON.toString());
@@ -94,6 +120,10 @@ String help = eventIDData.get((int) v.getTag());
         });
     }
 
+    /**
+     * returns count of cards diplayed
+     * @return int
+     */
     @Override
     public int getItemCount() {
         return mDataset.size();

@@ -16,6 +16,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Async Web service task to check and varify a login of a user and their credentials
+ */
 public class LoginWebService  extends AsyncTask<Void, Void, String> {
 
     private LoginWebService.OnLoginTaskCompleteListener mListener;
@@ -79,7 +82,7 @@ public class LoginWebService  extends AsyncTask<Void, Void, String> {
 
     }
     /**
-     * methods for other methods
+     * methods for other methods after task has been complete
      */
     public interface OnLoginTaskCompleteListener {
         void onLoginTaskCompletion(String message);

@@ -78,7 +78,10 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
     }
 
 
-
+    /**
+     * creates and starts eventsWebServices to get events JSON from database
+     * @param view
+     */
     public void loadEvents(View view){
         EventsWebService task = new EventsWebService(EventsFragment.this);
         task.execute();
@@ -112,6 +115,8 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
 
     /**
      * parses the recieved JSON from async task EventsWebService
+     * loads up 3 arrayLists to be passed to Adapter
+     * sorts and organizes events based on date
      * @param json
      */
     private void parseJSON(final String json) throws JSONException, ParseException {
@@ -122,24 +127,30 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
         JSONArray jObject = new JSONArray();
         ArrayList<Date>  myEventList = new ArrayList<Date>();
 
-
         try {
             jObject = new JSONArray(json);
             for (int i = 0; i < jObject.length(); i++) {
                 JSONObject event = jObject.getJSONObject(i);
 
+                //gets date of events and converts into Java.Date
                 String eventDate = event.getString("EDate");
                 DateFormat format = new SimpleDateFormat("yyyy, MMM dd, hh:mm aa", Locale.ENGLISH);
                 Date eventDateDate = format.parse(eventDate);
                 Date currDay = new Date();
 
+                //checks if event has already happened
                 if (eventDateDate.before(currDay)) {
+                    //do nothing
+
+                //checks if this is the first event being added to list
                 } else if(myEventList.size()==0) {
                     myEventList.add(eventDateDate);
                     mDataset.add(event.getString("EName"));
                     eventLocData.add(event.getString("ELocation"));
                     eventID.add(event.getString("EID"));
                     eventDateData.add(event.getString("EDate"));
+
+                //loops in a nested while that compares current event to other events in list for ordering
                 }else{
                     int hasBennAdded =0;
                     int j=  0;
@@ -157,7 +168,6 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
                             j++;
 
                         }else{
-
                             myEventList.add(j,eventDateDate);
                             mDataset.add(j,event.getString("EName"));
                             eventLocData.add(j,event.getString("ELocation"));
