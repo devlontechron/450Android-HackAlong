@@ -8,11 +8,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import group6.tcss450.uw.edu.hackalong.EditProfileFragment;
-
 /**
- * Created by Devin on 5/23/2017.
+ * Created by Devin Durham on 5/23/2017.
  */
+
+
 
 public class EditProfileWebService extends AsyncTask<Void, Void, String>{
 

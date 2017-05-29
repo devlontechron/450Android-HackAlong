@@ -66,7 +66,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.recycler_view_events, container, false);
         loadEvents(v);
-        mTextView = (TextView) v.findViewById(R.id.EventsText);
+        //mTextView = (TextView) v.findViewById(R.id.EventsText);
      //  FloatingActionButton F = (FloatingActionButton) v.findViewById(R.id.FABEventSearch);
         //F.setOnClickListener(this);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.list);
@@ -77,28 +77,7 @@ public class EventsFragment extends LoginFragment implements EventsWebService.On
 
     }
 
-    /**
-     * handles events in the event of clicking the update button to get Event information
-     * @param view
-     */
-    @Override
-    public void onClick(View view){
-        if (mListener != null) {
-            switch (view.getId()) {
-                case R.id.FABEventSearch:
-                    mListener.onFragmentInteraction("eventSearch", null, null);
-                    break;
 
-                default:
-                    break;
-
-            }
-        }
-    }
-
-    public void onClickCard(View v){
-
-    }
 
     public void loadEvents(View view){
         EventsWebService task = new EventsWebService(EventsFragment.this);

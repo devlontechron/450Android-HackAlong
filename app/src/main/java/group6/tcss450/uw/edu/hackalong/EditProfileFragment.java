@@ -105,6 +105,8 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
     public void onClick(View v) {
         SharedPreferences mPref = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         if (mListener != null) {
+
+
             un = userName.getText().toString();
             mPref.edit().putString(getString(R.string.UN),un).apply();
             if(userAge.getText().toString().equals("")){
@@ -124,9 +126,15 @@ public class EditProfileFragment extends ProfileFragment implements EditProfileW
             mPref.edit().putString(getString(R.string.UEv),uev).apply();
             ue = userEmail.getText().toString();
             mPref.edit().putString(getString(R.string.UE),ue).apply();
-            EditProfileWebService task = new EditProfileWebService(EditProfileFragment.this, ue, un, ul, ua, uev, ub, ut);
-            task.execute();
+
             //mListener.onFragmentInteraction("events", username, password);
+            if(userName.getText().toString().equals("")){
+                Toast.makeText(getActivity().getApplicationContext(), "You must have a name", Toast.LENGTH_LONG).show();
+            }else{
+                un = userName.getText().toString();
+                EditProfileWebService task = new EditProfileWebService(EditProfileFragment.this, ue, un, ul, ua, uev, ub, ut);
+                task.execute();
+            }
 
         }
     }
